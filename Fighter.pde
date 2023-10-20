@@ -120,7 +120,7 @@ class Fighter extends Character{
     }
 
 
-    void idleFront() {
+    void idleFront(color hairColor, color clothesColor, color skinColor) {
 
         // Layout
 
@@ -187,7 +187,7 @@ class Fighter extends Character{
 
 
         // Clothes
-        fill(#3868ba);
+        fill(clothesColor);
         noStroke();
         beginShape();
         rect(x-20*tam, y-4*tam, 8*tam, 4*tam);
@@ -204,7 +204,7 @@ class Fighter extends Character{
 
 
         // Hair
-        fill(#52a3cc);
+        fill(hairColor);
         noStroke();
         beginShape();
         rect(x-16*tam, y-12*tam, 4*tam, 4*tam);
@@ -224,7 +224,7 @@ class Fighter extends Character{
 
 
         // Skin
-        fill(#e5beac);
+        fill(skinColor);
         noStroke();
         beginShape();
         rect(x-12*tam, y-20*tam, 4*tam, 4*tam);
