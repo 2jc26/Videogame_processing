@@ -14,7 +14,7 @@ class Mage {
     }
 
     void idleFront() {
-        
+        // scale(-1, 1);
         noStroke();
         fill(#290050); // Interior hat
         beginShape();
@@ -118,6 +118,7 @@ class Mage {
         fill(#290050);
         rect(x+int(16*4*tam), y+int(11*4*tam), int(4*tam), int(4*tam));
         rect(x+int(21*4*tam), y+int(7*4*tam), int(4*tam), int(4*tam));
+        // scale(-1, 1);
 
     }
 }
