@@ -1,5 +1,6 @@
 Fighter pej;
 Mage mage;
+Emblem emblem;
 
 color blueColor = #52a3cc;
 color redColor = #8c0e54;
@@ -15,12 +16,15 @@ void setup() {
     background(255);
     pej = new Fighter(500,500,4);
     mage = new Mage(200,200,1);
+    emblem = new Emblem(750,750,1);
 }
 
 void draw() {
     background(255);
     pej.idleFront(hairColor, clothesColor, skinColor);
     mage.idleFront();
+    emblem.draw();
+
 }
 
 
