@@ -4,6 +4,8 @@ class Emblem {
     private int y;
     private float tam;
 
+    private int speed;
+
 
     public Emblem(int posX, int posY, float tam) {
         this.x = posX;
