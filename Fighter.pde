@@ -13,7 +13,31 @@ class Fighter extends Character{
         
     }
 
+    public int getX() {
+        return x;
+    }
 
+    public int getY() {
+        return y;
+    }
+
+    public int getTam() {
+        return tam;
+    }
+
+    public void setX(int posX) {
+        this.x = posX;
+    }
+
+    public void setY(int posY) {
+        this.y = posY;
+    }
+
+    public void setTam(int tam) {
+        this.tam = tam;
+    }
+
+    
     void idleRight() {
 
         // Legs
