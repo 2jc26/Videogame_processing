@@ -95,4 +95,12 @@ class Emblem {
         rect(x+36*tam, y+16*tam, 4*tam, 8*tam);
         endShape();
     }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
 }
