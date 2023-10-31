@@ -1,5 +1,6 @@
 import java.util.HashMap;
 
+
 class Minigame1 {
     
     Emblem emblem;
