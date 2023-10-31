@@ -7,15 +7,16 @@ class Fireball {
     private float tam;
     private float tamXMax;
     private float tamYMax;
-    private boolean colission = false;
+    private int index;
     
     
-    public Fireball(int x, int y, int speed, float tam) {
+    public Fireball(int x, int y, int speed, float tam, int index) {
         this.x = x;
         this.y = y;
         this.directionX = speed;
         this.directionY = speed;
         this.tam = tam;
+        this.index = index;
         changeLimits();
     }
     
@@ -24,7 +25,7 @@ class Fireball {
         tamYMax = 20 * 4 * tam;
     }
     
-    void draw() {
+    public void draw() {
         beginShape();
         fill(#F11004);
         noStroke();
@@ -76,7 +77,7 @@ class Fireball {
         endShape();
     }
     
-    void move(int inicialX, int limitX, int inicialY, int limitY) {
+    public void move(int inicialX, int limitX, int inicialY, int limitY) {
         limitX -= int(tamXMax);
         limitY -= int(tamYMax);
         x +=directionX;
@@ -102,69 +103,77 @@ class Fireball {
         }
     }
 
+    public boolean collide(int xObj, int yObj, float tamXObj, float tamYObj) {
+        if (this.x + tamXMax > x && this.x < xObj + tamXObj && this.y + tamYMax > y && this.y < yObj + tamYObj) {
+            return true;
+        }
+        return false;
+    }
+
+    public void bounce() {
+        directionX *= -1;
+        directionY *= -1;
+    }
+
     // get and setters of all variables
-    int getX() {
+    public int getX() {
         return x;
     }
 
-    void setX(int x) {
+    public void setX(int x) {
         this.x = x;
     }
 
-    int getY() {
+    public int getY() {
         return y;
     }
 
-    void setY(int y) {
+    public void setY(int y) {
         this.y = y;
     }
 
-    int getDirectionX() {
+    public int getDirectionX() {
         return directionX;
     }
 
-    void setDirectionX(int directionX) {
+    public void setDirectionX(int directionX) {
         this.directionX = directionX;
     }
 
-    int getDirectionY() {
+    public int getDirectionY() {
         return directionY;
     }
 
-    void setDirectionY(int directionY) {
+    public void setDirectionY(int directionY) {
         this.directionY = directionY;
     }
 
-    float getTam() {
+    public float getTam() {
         return tam;
     }
 
-    void setTam(float tam) {
+    public void setTam(float tam) {
         this.tam = tam;
     }
 
-    float getTamXMax() {
+    public float getTamXMax() {
         return tamXMax;
     }
 
-    void setTamXMax(float tamXMax) {
+    public void setTamXMax(float tamXMax) {
         this.tamXMax = tamXMax;
     }
 
-    float getTamYMax() {
+    public float getTamYMax() {
         return tamYMax;
     }
 
-    void setTamYMax(float tamYMax) {
+    public void setTamYMax(float tamYMax) {
         this.tamYMax = tamYMax;
     }
 
-    boolean isColission() {
-        return colission;
+    public int getIndexValue() {
+        return index;
     }
-
-    void setColission(boolean colission) {
-        this.colission = colission;
-    }        
         
 }

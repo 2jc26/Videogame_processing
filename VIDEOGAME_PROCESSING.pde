@@ -4,6 +4,7 @@ Emblem emblem;
 Fireball fireball;
 Minigame1 minigame1;
 Initial inicial;
+Indexer indexer;
 
 color blueColor = #52a3cc;
 color redColor = #8c0e54;
@@ -19,11 +20,12 @@ int screen = 1;
 void setup() {
     size(1000,1000);
     background(255);
+    indexer = new Indexer();
     pej = new Fighter(500,500,4);
     mage = new Mage(200,200,1);
-    emblem = new Emblem(750,750,1);
-    fireball = new Fireball(400,750,1, 0.5);
-    minigame1 = new Minigame1(emblem, 10);
+    emblem = new Emblem(480,700,0.5);
+    fireball = new Fireball(400,750,1, 0.5, 0);
+    minigame1 = new Minigame1(emblem, 16, indexer);
     inicial = new Initial(pej, mage, emblem, fireball, clothesColor, hairColor, skinColor);
 }
 
