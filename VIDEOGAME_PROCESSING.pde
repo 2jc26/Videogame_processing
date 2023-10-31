@@ -15,7 +15,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 1;
+int screen = 0;
 
 void setup() {
     size(1000,1000);
