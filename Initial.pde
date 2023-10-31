@@ -13,6 +13,10 @@ class Initial {
     private boolean moveDown = false;
     private boolean moveLeft = false;
     private boolean moveRight = false;
+    private boolean moveUpLeft = false;
+    private boolean moveUpRight = false;
+    private boolean moveDownLeft = false;
+    private boolean moveDownRight = false;
 
 
     public Initial(Fighter pej, Mage mage, Emblem emblem, Fireball fireball, color clothesColor, color hairColor, color skinColor) {
@@ -25,14 +29,13 @@ class Initial {
         this.skinColor = skinColor;
     }
 
-    public void draw () {
+    public int draw () {
 
         background(255);
         pej.idleFront(hairColor, clothesColor, skinColor);
         mage.idleFront();
-        emblem.draw();
-        fireball.draw();
         movement();
+        return fight();
     }
 
     private void movement() {
@@ -49,20 +52,24 @@ class Initial {
             moveDown = false;
             moveLeft = false;
             moveRight = false;
+            moveUpLeft = false;
+            moveUpRight = false;
+            moveDownLeft = false;
+            moveDownRight = false;
         }
-        else if (moveUp && moveLeft) {
+        else if (moveUpLeft) {
             pej.setX(pej.getX() - 1);
             pej.setY(pej.getY() - 1);
         }
-        else if (moveUp && moveRight) {
+        else if (moveUpRight) {
             pej.setX(pej.getX() + 1);
             pej.setY(pej.getY() - 1);
         }
-        else if (moveDown && moveLeft) {
+        else if (moveDownLeft) {
             pej.setX(pej.getX() - 1);
             pej.setY(pej.getY() + 1);
         }
-        else if (moveDown && moveRight) {
+        else if (moveDownRight) {
             pej.setX(pej.getX() + 1);
             pej.setY(pej.getY() + 1);
         }
@@ -89,6 +96,14 @@ class Initial {
             moveLeft = true;
         if (key == 'd')
             moveRight = true;
+        if (key == 'q')
+            moveUpLeft = true;
+        if (key == 'e')
+            moveUpRight = true;
+        if (key == 'z')
+            moveDownLeft = true;
+        if (key == 'x')
+            moveDownRight = true;
     }
 
     void keyReleased() {
@@ -100,5 +115,22 @@ class Initial {
             moveLeft = false;
         if (key == 'd')
             moveRight = false;
+        if (key == 'q')
+            moveUpLeft = false;
+        if (key == 'e')
+            moveUpRight = false;
+        if (key == 'z')
+            moveDownLeft = false;
+        if (key == 'x')
+            moveDownRight = false;
+    }
+
+
+    private int fight() {
+
+        if ((pej.getX() < 150) && (pej.getY() < 150))
+        return 1;
+        else
+        return 0;
     }
 }

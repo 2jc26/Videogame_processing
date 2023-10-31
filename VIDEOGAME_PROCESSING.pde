@@ -21,8 +21,8 @@ void setup() {
     size(1000,1000);
     background(255);
     indexer = new Indexer();
-    pej = new Fighter(500,500,4);
-    mage = new Mage(200,200,1);
+    pej = new Fighter(500,500,1);
+    mage = new Mage(100,100,0.5);
     emblem = new Emblem(480,700,0.5);
     fireball = new Fireball(400,750,1, 0.5, 0);
     minigame1 = new Minigame1(emblem, 16, indexer);
@@ -32,7 +32,7 @@ void setup() {
 void draw() {
     switch (screen) {
         case 0:
-            inicial.draw();
+            screen = inicial.draw();
             break;
         case 1:
             minigame1.draw();

@@ -9,6 +9,15 @@ class Minigame1 {
 
     boolean lost = false;
 
+    private boolean moveUp = false;
+    private boolean moveDown = false;
+    private boolean moveLeft = false;
+    private boolean moveRight = false;
+    private boolean moveUpLeft = false;
+    private boolean moveUpRight = false;
+    private boolean moveDownLeft = false;
+    private boolean moveDownRight = false;
+
     ArrayList<Fireball> fireballs = new ArrayList<Fireball>();
 
     HashMap<Integer, ArrayList<Integer>> mapTable = new HashMap<Integer, ArrayList<Integer>>();
@@ -36,6 +45,7 @@ class Minigame1 {
     }
 
     public void draw() {
+        movement();
         if (emblem.getVida() > 0) {
             background(255);
             arena(limit);
@@ -130,5 +140,92 @@ class Minigame1 {
         rect (190, 190, tam, tam);
     }
 
+
+    private void movement() {
+
+        if(keyPressed) {
+            keyPressed();
+        }
+        else {
+            keyReleased();
+        }
+
+        if (!keyPressed)  {
+            moveUp = false;
+            moveDown = false;
+            moveLeft = false;
+            moveRight = false;
+            moveUpLeft = false;
+            moveUpRight = false;
+            moveDownLeft = false;
+            moveDownRight = false;
+        }
+        else if (moveUpLeft) {
+            emblem.setX(emblem.getX() - 1);
+            emblem.setY(emblem.getY() - 1);
+        }
+        else if (moveUpRight) {
+            emblem.setX(emblem.getX() + 1);
+            emblem.setY(emblem.getY() - 1);
+        }
+        else if (moveDownLeft) {
+            emblem.setX(emblem.getX() - 1);
+            emblem.setY(emblem.getY() + 1);
+        }
+        else if (moveDownRight) {
+            emblem.setX(emblem.getX() + 1);
+            emblem.setY(emblem.getY() + 1);
+        }
+        else if (moveUp) {
+            emblem.setY(emblem.getY() - 1);
+        }
+        else if (moveDown) {
+            emblem.setY(emblem.getY() + 1);
+        }
+        else if (moveLeft) {
+            emblem.setX(emblem.getX() - 1);
+        }
+        else if (moveRight) {
+            emblem.setX(emblem.getX() + 1);
+        }
+    }
+
+    void keyPressed() {
+        if (key == 'w')
+            moveUp = true;
+        if (key == 's')
+            moveDown = true;
+        if (key == 'a')
+            moveLeft = true;
+        if (key == 'd')
+            moveRight = true;
+        if (key == 'q')
+            moveUpLeft = true;
+        if (key == 'e')
+            moveUpRight = true;
+        if (key == 'z')
+            moveDownLeft = true;
+        if (key == 'x')
+            moveDownRight = true;
+    }
+
+    void keyReleased() {
+        if (key == 'w')
+            moveUp = false;
+        if (key == 's')
+            moveDown = false;
+        if (key == 'a')
+            moveLeft = false;
+        if (key == 'd')
+            moveRight = false;
+        if (key == 'q')
+            moveUpLeft = false;
+        if (key == 'e')
+            moveUpRight = false;
+        if (key == 'z')
+            moveDownLeft = false;
+        if (key == 'x')
+            moveDownRight = false;
+    }
 
 }
