@@ -1,4 +1,4 @@
-class Fighter extends Character{
+class Fighter {
 
     private int x;
     private int y;
