@@ -3,6 +3,8 @@ class St {
     String[] textos;
     int yPosition; // Posición vertical actual
     boolean isDrawn = false;
+    
+    boolean isClicked = false;
 
     public St (String [] textos) {
         this.textos = textos;   
@@ -13,6 +15,7 @@ class St {
         if (!isDrawn) {
             isDrawn = true;
             fill(0);
+            textSize(20);
             int wordCount = 0;
             String currentLine = "";
 
@@ -36,7 +39,18 @@ class St {
             }
         }
 
+        textSize(20);
+        fill(0);
+        text("Para continuar pulsa la tecla: \"Espacio\"", 350, 700);  
+
         // TODO: button
         return p++;
+    }
+    
+}
+
+void keyPressed() {
+    if (keyCode == UP) {
+        isClicked = true;
     }
 }

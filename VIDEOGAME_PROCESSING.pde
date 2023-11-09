@@ -57,69 +57,71 @@ void setup() {
 
 void draw() {
 
-    // st.draw(1,24);
+    st.draw(1,15);
 
-    if (menu.getState().equals("Principal"))
-        menu.draw();
-    else {
-        switch (screen) {
-            case 0:
-                screen = dungeon.draw(screen);
-                break;
-            case 1:
-                screen = inicial.draw(screen);
-                break;
-            case 2:
-                screen = combat1.draw(screen);
-                break;
-            case 3:
-                screen = rewards.draw(screen);
-                break;
-            case 4:
-                screen = dungeon.draw(screen);
-                break;
-            case 5:
-                screen = dungeon.draw(screen);
-                break;
-            case 6:
-                screen = rewards.draw(screen);
-                break;
-            case 7:
-                screen = st.draw(screen,24);
-                break;
-            case 8:
-                screen = dungeon.draw(screen);
-                break;
-            case 9:
-                screen = inicial.draw(screen);
-                break;
-            case 10:
-                screen = combat1.draw(screen);
-                break;
-            case 11:
-                screen = dungeon.draw(screen);
-                break;
-            case 12:
-                screen = rewards.draw(screen);
-                break;
-            case 13:
-                screen = dungeon.draw(screen);
-                break;
-            case 14:
-                screen = st.draw(screen,24);
-                break;
-            case 15:
-                screen = dungeon.draw(screen);
-                break;
-            case 16:
-                screen = dungeon.draw(screen);
-                break;
-            case 17:
-                screen = st.draw(screen,24);
-                break;
-        }
+    // rewards.draw(1);
 
-    }
+    // if (menu.getState().equals("Principal"))
+    //     menu.draw();
+    // else {
+    //     switch (screen) {
+    //         case 0:
+    //             screen = dungeon.draw(screen);
+    //             break;
+    //         case 1:
+    //             screen = inicial.draw(screen);
+    //             break;
+    //         case 2:
+    //             screen = combat1.draw(screen);
+    //             break;
+    //         case 3:
+    //             screen = rewards.draw(screen);
+    //             break;
+    //         case 4:
+    //             screen = dungeon.draw(screen);
+    //             break;
+    //         case 5:
+    //             screen = dungeon.draw(screen);
+    //             break;
+    //         case 6:
+    //             screen = rewards.draw(screen);
+    //             break;
+    //         case 7:
+    //             screen = st.draw(screen,24);
+    //             break;
+    //         case 8:
+    //             screen = dungeon.draw(screen);
+    //             break;
+    //         case 9:
+    //             screen = inicial.draw(screen);
+    //             break;
+    //         case 10:
+    //             screen = combat1.draw(screen);
+    //             break;
+    //         case 11:
+    //             screen = dungeon.draw(screen);
+    //             break;
+    //         case 12:
+    //             screen = rewards.draw(screen);
+    //             break;
+    //         case 13:
+    //             screen = dungeon.draw(screen);
+    //             break;
+    //         case 14:
+    //             screen = st.draw(screen,24);
+    //             break;
+    //         case 15:
+    //             screen = dungeon.draw(screen);
+    //             break;
+    //         case 16:
+    //             screen = dungeon.draw(screen);
+    //             break;
+    //         case 17:
+    //             screen = st.draw(screen,24);
+    //             break;
+    //     }
+
+    // }
 }
 
 
