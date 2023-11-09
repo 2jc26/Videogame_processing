@@ -49,7 +49,7 @@ void draw() {
                 screen = inicial.draw();
                 break;
             case 1:
-                minigame1.draw();
+                combat1.draw();
                 break;
         }
 

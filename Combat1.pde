@@ -185,7 +185,7 @@ class Combat1 {
             // }
             if (spears.get(i).colision(emblem.getX(), emblem.getY(), emblem.getTamXMax(), emblem.getTamYMax())) {
                 // emblem.lostLife();
-                print("chocó")
+                print("chocó");
             }
             
         }
