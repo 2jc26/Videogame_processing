@@ -17,6 +17,8 @@ color skinColor = #e5beac;
 
 int screen = 0;
 
+Spear spear;
+
 void setup() {
     size(1000,1000);
     background(255);
@@ -27,22 +29,23 @@ void setup() {
     fireball = new Fireball(400,750,1, 0.5, 0);
     minigame1 = new Minigame1(emblem, 16, indexer);
     inicial = new Initial(pej, mage, emblem, fireball, clothesColor, hairColor, skinColor);
+    spear = new Spear(400,300,1, 4, 0);
 }
 
 void draw() {
-    switch (screen) {
-        case 0:
-            screen = inicial.draw();
-            break;
-        case 1:
-            minigame1.draw();
-            break;
-        default :
+    // switch (screen) {
+    //     case 0:
+    //         screen = inicial.draw();
+    //         break;
+    //     case 1:
+    //         minigame1.draw();
+    //         break;
+    //     default :
             
-        break;	
+    //     break;	
 
-    }
-
+    // }
+    spear.draw();
 }
 
 
