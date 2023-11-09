@@ -8,6 +8,7 @@ class Spear {
     private float tamXMax;
     private float tamYMax;
     private int index;
+    private boolean colisionB = false;
 
     public Spear(int x, int y, int speed, float tam, int index) {
         this.x = x;
@@ -21,7 +22,7 @@ class Spear {
 
     private void changeLimits() {
         tamXMax = 28 * 4 * tam;
-        tamYMax = 20 * 4 * tam;
+        tamYMax = 28 * 4 * tam;
     }
 
     void draw() {
@@ -68,6 +69,38 @@ class Spear {
         rect(x+int(-125*4*tam),y+int(11*4*tam), int(126*4*tam), int(1*4*tam));
         endShape();
 
+    }
+
+    void move(int inicialX, int limitX, int inicialY,int limitY) {
+        x += directionX;
+        // y += directionY;
+        if (x > 900 || x < 0) {
+            // directionX *= -1;
+            x = inicialX;
+            colisionB = false;
+        }
+        // if (y > tamYMax || y < 0) {
+        //     directionY *= -1;
+        // }
+    }
+
+    boolean colision(int xObj, int yObj, float maxXobj, float maxYObj) {
+        if (colisionB) return false;
+        colisionB = true;
+        if (xObj > int(x-122*4*tam) && xObj < x + tamXMax && yObj > y && yObj < y + tamYMax) {
+            return true;
+        }
+        if (xObj + maxXobj > int(x-122*4*tam) && xObj + maxXobj < x + tamXMax && yObj > y && yObj < y + tamYMax) {
+            return true;
+        }
+        if (xObj > int(x-122*4*tam) && xObj < x + tamXMax && yObj + maxYObj > y && yObj + maxYObj < y + tamYMax) {
+            return true;
+        }
+        if (xObj + maxXobj > int(x-122*4*tam) && xObj + maxXobj < x + tamXMax && yObj + maxYObj > y && yObj + maxYObj < y + tamYMax) {
+            return true;
+        }
+        colisionB = false;
+        return false;
     }
 
 }

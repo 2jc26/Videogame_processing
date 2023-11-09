@@ -24,26 +24,48 @@ class Combat1 {
 
     HashMap<Integer, ArrayList<Integer>> mapTable = new HashMap<Integer, ArrayList<Integer>>();
 
+    ArrayList<Spear> spears = new ArrayList<Spear>();
+
+    private int nivel;
+
     int limit = 560;
     int inicial = 200;
 
-    public Combat1(Emblem emblem, int cantidad, Indexer indexer) {
+    public Combat1(Emblem emblem, int cantidad, Indexer indexer, int nivel) {
         this.emblem = emblem;
 
         int availableWidth = 500;
         int separation = 65;
         int x = 200;
         int y = 250;
+        this.nivel = nivel;
 
-        for (int i = 0; i < cantidad; i++) {
-            fireballs.add(new Fireball(x, y, 1, 0.5, indexer.getIndex()));
-            if (x + separation <= availableWidth+inicial) {
-                x += separation;
-            } else {
-                y += separation;
-                x = 200;
+        if (nivel == 1) {
+            for (int i = 0; i < cantidad; i++) {
+                fireballs.add(new Fireball(x, y, 1, 0.5, indexer.getIndex()));
+                if (x + separation <= availableWidth+inicial) {
+                    x += separation;
+                } else {
+                    y += separation;
+                    x = 200;
+                }
             }
+        } else if (nivel == 2) {
+            int multiplier = 1;
+            for (int i = 0; i < 1; i++) {
+                spears.add(new Spear(500, y, 3, multiplier*0.5, indexer.getIndex()));
+                if (y + separation <= availableWidth+inicial) {
+                    y += separation;
+                } else {
+                    multiplier *= -1;
+                    x += separation;
+                    y = 200;
+                }
+            }
+        } else if (nivel == 3) {
+
         }
+
     }
 
     public void draw() {
@@ -51,50 +73,38 @@ class Combat1 {
         if (emblem.getVida() > 0) {
             background(255);
             arena(limit);
-
-            for (int i = 0; i < fireballs.size(); i++) {
-                fireballs.get(i).draw();
-                int sector = setSector(fireballs.get(i).getX(), fireballs.get(i).getY(), fireballs.get(i).getTamXMax(), fireballs.get(i).getTamYMax());
-                ArrayList<Integer> listObjSec = mapTable.get(sector);
-                if (listObjSec != null) {
-                    if (listObjSec.contains(fireballs.get(i).getIndexValue())) {
-                        listObjSec.remove(Integer.valueOf(fireballs.get(i).getIndexValue()));
-                    }
-                }
-                fireballs.get(i).move(inicial,limit+inicial,inicial,limit+inicial);
-                sector = setSector(fireballs.get(i).getX(), fireballs.get(i).getY(), fireballs.get(i).getTamXMax(), fireballs.get(i).getTamYMax());
-                listObjSec = mapTable.get(sector);
-                if (listObjSec == null) {
-                    listObjSec = new ArrayList<Integer>();
-                    listObjSec.add(fireballs.get(i).getIndexValue());
-                    mapTable.put(sector, listObjSec);
-                } else {
-                    if (!listObjSec.contains(fireballs.get(i).getIndexValue())) {
-                        // if (listObjSec.size() > 0) {
-                        //     for (int j = 0; j < listObjSec.size(); j++) {
-                        //         if (fireballs.get(i).collide(fireballs.get(listObjSec.get(j)).getX(), fireballs.get(listObjSec.get(j)).getY(), fireballs.get(listObjSec.get(j)).getTamXMax(), fireballs.get(listObjSec.get(j)).getTamYMax())) {
-                        //             fireballs.get(i).bounce();
-                        //         }
-                        //     }
-                        // }
-                        listObjSec.add(fireballs.get(i).getIndexValue());
-                    }
-                }
-
-
+            if (nivel == 1 || nivel == 3) {
+                fireBallsNivel();
+            } else if (nivel == 2 || nivel == 3) {
+                spearsNivel();
             }
 
-            spear.draw();
             emblem.draw();
 
-            int[] sectorEmblema = sectorEmblema(emblem.minXVal(), emblem.minYVal(), emblem.getTamXMax(), emblem.getTamYMax(), fireballs.get(0).getTamXMax(), fireballs.get(0).getTamYMax());
+            int[] sectorEmblema = new int[0];
+            if (nivel == 1 || nivel == 3) {
+                sectorEmblema = sectorEmblema(emblem.minXVal(), emblem.minYVal(), emblem.getTamXMax(), emblem.getTamYMax(), fireballs.get(0).getTamXMax(), fireballs.get(0).getTamYMax());
+            } 
+            // TODO implementar colisiones para nivel 2 y 3
+            // else if (nivel == 2 || nivel == 3) {
+            //     sectorEmblema = sectorEmblema(emblem.minXVal(), emblem.minYVal(), emblem.getTamXMax(), emblem.getTamYMax(), spears.get(0).getTamXMax(), spears.get(0).getTamYMax());
+            // }
+
             String g = "";
             for (int i = 0; i < sectorEmblema.length; i++) {
                 if (mapTable.get(sectorEmblema[i]) != null) {
                     for (int j = 0; j < mapTable.get(sectorEmblema[i]).size(); j++) {
-                        if (emblem.collide(fireballs.get(mapTable.get(sectorEmblema[i]).get(j)).getX(), fireballs.get(mapTable.get(sectorEmblema[i]).get(j)).getY(), fireballs.get(mapTable.get(sectorEmblema[i]).get(j)).getTamXMax(), fireballs.get(mapTable.get(sectorEmblema[i]).get(j)).getTamYMax())) {                   
-                            fireballs.get(mapTable.get(sectorEmblema[i]).get(j)).bounce();
-                        }
+                        if (nivel == 1 || nivel == 3) {
+                            if (emblem.collide(fireballs.get(mapTable.get(sectorEmblema[i]).get(j)).getX(), fireballs.get(mapTable.get(sectorEmblema[i]).get(j)).getY(), fireballs.get(mapTable.get(sectorEmblema[i]).get(j)).getTamXMax(), fireballs.get(mapTable.get(sectorEmblema[i]).get(j)).getTamYMax())) {                   
+                                fireballs.get(mapTable.get(sectorEmblema[i]).get(j)).bounce();
+                            }
+                        } 
+                        // TODO implementar colisiones para nivel 2 y 3
+                        // else if (nivel == 2 || nivel == 3) {
+                        //     if (emblem.collide(spears.get(mapTable.get(sectorEmblema[i]).get(j)).getX(), spears.get(mapTable.get(sectorEmblema[i]).get(j)).getY(), spears.get(mapTable.get(sectorEmblema[i]).get(j)).getTamXMax(), spears.get(mapTable.get(sectorEmblema[i]).get(j)).getTamYMax())) {                   
+                        //         spears.get(mapTable.get(sectorEmblema[i]).get(j)).bounce();
+                        //     }
+                        // }
                     }
                 }
             }
@@ -108,6 +118,77 @@ class Combat1 {
             rect(inicial-15, inicial+limit+40, healtBarWidth, 20);
         }
 
+    }
+
+    private void fireBallsNivel() {
+        for (int i = 0; i < fireballs.size(); i++) {
+            fireballs.get(i).draw();
+            int sector = setSector(fireballs.get(i).getX(), fireballs.get(i).getY(), fireballs.get(i).getTamXMax(), fireballs.get(i).getTamYMax());
+            ArrayList<Integer> listObjSec = mapTable.get(sector);
+            if (listObjSec != null) {
+                if (listObjSec.contains(fireballs.get(i).getIndexValue())) {
+                    listObjSec.remove(Integer.valueOf(fireballs.get(i).getIndexValue()));
+                }
+            }
+            fireballs.get(i).move(inicial,limit+inicial,inicial,limit+inicial);
+            sector = setSector(fireballs.get(i).getX(), fireballs.get(i).getY(), fireballs.get(i).getTamXMax(), fireballs.get(i).getTamYMax());
+            listObjSec = mapTable.get(sector);
+            if (listObjSec == null) {
+                listObjSec = new ArrayList<Integer>();
+                listObjSec.add(fireballs.get(i).getIndexValue());
+                mapTable.put(sector, listObjSec);
+            } else {
+                if (!listObjSec.contains(fireballs.get(i).getIndexValue())) {
+                    // if (listObjSec.size() > 0) {
+                    //     for (int j = 0; j < listObjSec.size(); j++) {
+                    //         if (fireballs.get(i).collide(fireballs.get(listObjSec.get(j)).getX(), fireballs.get(listObjSec.get(j)).getY(), fireballs.get(listObjSec.get(j)).getTamXMax(), fireballs.get(listObjSec.get(j)).getTamYMax())) {
+                    //             fireballs.get(i).bounce();
+                    //         }
+                    //     }
+                    // }
+                    listObjSec.add(fireballs.get(i).getIndexValue());
+                }
+            }
+        }
+    }
+
+    private void spearsNivel() {
+        for (int i = 0; i < spears.size(); i++) {
+            spears.get(i).draw();
+            // TODO
+            // int sector = setSector(spears.get(i).getX(), spears.get(i).getY(), spears.get(i).getTamXMax(), spears.get(i).getTamYMax());
+            // ArrayList<Integer> listObjSec = mapTable.get(sector);
+            // if (listObjSec != null) {
+            //     if (listObjSec.contains(spears.get(i).getIndexValue())) {
+            //         listObjSec.remove(Integer.valueOf(spears.get(i).getIndexValue()));
+            //     }
+            // }
+            // spears.get(i).move(inicial,limit+inicial,inicial,limit+inicial);
+            // TODO
+            // sector = setSector(spears.get(i).getX(), spears.get(i).getY(), spears.get(i).getTamXMax(), spears.get(i).getTamYMax());
+            // listObjSec = mapTable.get(sector);
+            // if (listObjSec == null) {
+            //     listObjSec = new ArrayList<Integer>();
+            //     listObjSec.add(spears.get(i).getIndexValue());
+            //     mapTable.put(sector, listObjSec);
+            // } else {
+            //     if (!listObjSec.contains(spears.get(i).getIndexValue())) {
+                    // if (listObjSec.size() > 0) {
+                    //     for (int j = 0; j < listObjSec.size(); j++) {
+                    //         if (spears.get(i).collide(spears.get(listObjSec.get(j)).getX(), spears.get(listObjSec.get(j)).getY(), spears.get(listObjSec.get(j)).getTamXMax(), spears.get(listObjSec.get(j)).getTamYMax())) {
+                    //             spears.get(i).bounce();
+                    //         }
+                    //     }
+                    // }
+            //         listObjSec.add(spears.get(i).getIndexValue());
+            //     }
+            // }
+            if (spears.get(i).colision(emblem.getX(), emblem.getY(), emblem.getTamXMax(), emblem.getTamYMax())) {
+                // emblem.lostLife();
+                print("chocó")
+            }
+            
+        }
     }
 
     private int[] sectorEmblema(int xObj, int yObj, float tamXObj, float tamYObj, float tamXMat, float tamYMat) {

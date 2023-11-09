@@ -3,7 +3,6 @@ class Initial {
     Fighter pej;
     Mage mage;
     Emblem emblem;
-    Fireball fireball;
 
     color clothesColor;
     color hairColor;
@@ -19,11 +18,10 @@ class Initial {
     private boolean moveDownRight = false;
 
 
-    public Initial(Fighter pej, Mage mage, Emblem emblem, Fireball fireball, color clothesColor, color hairColor, color skinColor) {
+    public Initial(Fighter pej, Mage mage, Emblem emblem, color clothesColor, color hairColor, color skinColor) {
         this.pej = pej;
         this.mage = mage;
         this.emblem = emblem;
-        this.fireball = fireball;
         this.clothesColor = clothesColor;
         this.hairColor = hairColor;
         this.skinColor = skinColor;

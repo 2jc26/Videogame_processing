@@ -15,7 +15,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 0;
+int screen = 1;
 
 Spear spear;
 
@@ -26,9 +26,8 @@ void setup() {
     pej = new Fighter(500,500,1);
     mage = new Mage(100,100,0.5);
     emblem = new Emblem(480,700,0.5);
-    fireball = new Fireball(400,750,1, 0.5, 0);
-    combat1 = new Combat1(emblem, 16, indexer);
-    inicial = new Initial(pej, mage, emblem, fireball, clothesColor, hairColor, skinColor);
+    combat1 = new Combat1(emblem, 16, indexer, 2);
+    inicial = new Initial(pej, mage, emblem, clothesColor, hairColor, skinColor);
 }
 
 void draw() {

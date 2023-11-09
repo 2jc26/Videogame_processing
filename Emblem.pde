@@ -36,6 +36,7 @@ class Emblem {
 
         fill(#071933);
         // draw a ruby
+        strokeWeight(1);
         beginShape();
         rect(x+ int(0*tam), y+ int(20*tam), int(4*tam), int(4*tam));
         rect(x- int(4*tam), y+ int(20*tam), int(4*tam), int(4*tam));
@@ -116,10 +117,14 @@ class Emblem {
 
     public boolean collide(int xObj, int yObj, float tamXObj, float tamYObj) {
         if (this.x + tamXMax > x && this.x < xObj + tamXObj && this.y + tamYMax > y && this.y < yObj + tamYObj) {
-            vida--;
+            lostLife();
             return true;
         }
         return false;
+    }
+
+    public void lostLife() {
+        vida--;
     }
 
     public void setSpeed(int speed) {
