@@ -55,10 +55,58 @@ void draw() {
     else {
         switch (screen) {
             case 0:
-                screen = inicial.draw();
+                screen = dungeon.draw(screen);
                 break;
             case 1:
-                combat1.draw();
+                screen = inicial.draw(screen);
+                break;
+            case 2:
+                screen = combat1.draw(screen);
+                break;
+            case 3:
+                screen = rewards.draw(screen);
+                break;
+            case 4:
+                screen = dungeon.draw(screen);
+                break;
+            case 5:
+                screen = dungeon.draw(screen);
+                break;
+            case 6:
+                screen = rewards.draw(screen);
+                break;
+            case 7:
+                screen = st.draw(screen);
+                break;
+            case 8:
+                screen = dungeon.draw(screen);
+                break;
+            case 9:
+                screen = inicial.draw(screen);
+                break;
+            case 10:
+                screen = combat1.draw(screen);
+                break;
+            case 11:
+                screen = dungeon.draw(screen);
+                break;
+            case 12:
+                screen = rewards.draw(screen);
+                break;
+            case 13:
+                screen = dungeon.draw(screen);
+                break;
+            case 14:
+                screen = st.draw(screen);
+                break;
+            case 15:
+                screen = dungeon.draw(screen);
+                break;
+            case 16:
+                screen = dungeon.draw(screen);
+                break;
+            case 17:
+                screen = st.draw(screen);
                 break;
         }
 
