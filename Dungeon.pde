@@ -85,25 +85,165 @@ class Dungeon {
                     }
                     break;
                 case 2:
-                    background(255);
+                    switch (side) {
+                        case 0: // top side
+                            doorX = random(width);
+                            doorY = 0;
+                        break;
+                        case 1: // right side
+                            doorX = width - squareSize;
+                            doorY = random(height);
+                        break;
+                        case 2: // bottom side
+                            doorX = random(width);
+                            doorY = height - squareSize;
+                        break;
+                        case 3: // left side
+                            doorX = 0;
+                            doorY = random(height);
+                        break;
+                        default:
+                            doorX = 0;
+                            doorY = 0;
+                    }
                     break;
                 case 3:
-                    background(255);
+                    switch (side) {
+                        case 0: // top side
+                            doorX = random(width);
+                            doorY = 0;
+                        break;
+                        case 1: // right side
+                            doorX = width - squareSize;
+                            doorY = random(height);
+                        break;
+                        case 2: // bottom side
+                            doorX = random(width);
+                            doorY = height - squareSize;
+                        break;
+                        case 3: // left side
+                            doorX = 0;
+                            doorY = random(height);
+                        break;
+                        default:
+                            doorX = 0;
+                            doorY = 0;
+                    }
                     break;
                 case 4:
-                    background(255);
+                    switch (side) {
+                        case 0: // top side
+                            doorX = random(width);
+                            doorY = 0;
+                        break;
+                        case 1: // right side
+                            doorX = width - squareSize;
+                            doorY = random(height);
+                        break;
+                        case 2: // bottom side
+                            doorX = random(width);
+                            doorY = height - squareSize;
+                        break;
+                        case 3: // left side
+                            doorX = 0;
+                            doorY = random(height);
+                        break;
+                        default:
+                            doorX = 0;
+                            doorY = 0;
+                    }
                     break;
                 case 5:
-                    background(255);
+                    switch (side) {
+                        case 0: // top side
+                            doorX = random(width);
+                            doorY = 0;
+                        break;
+                        case 1: // right side
+                            doorX = width - squareSize;
+                            doorY = random(height);
+                        break;
+                        case 2: // bottom side
+                            doorX = random(width);
+                            doorY = height - squareSize;
+                        break;
+                        case 3: // left side
+                            doorX = 0;
+                            doorY = random(height);
+                        break;
+                        default:
+                            doorX = 0;
+                            doorY = 0;
+                    }
                     break;
                 case 6:
-                    background(255);
+                    switch (side) {
+                        case 0: // top side
+                            doorX = random(width);
+                            doorY = 0;
+                        break;
+                        case 1: // right side
+                            doorX = width - squareSize;
+                            doorY = random(height);
+                        break;
+                        case 2: // bottom side
+                            doorX = random(width);
+                            doorY = height - squareSize;
+                        break;
+                        case 3: // left side
+                            doorX = 0;
+                            doorY = random(height);
+                        break;
+                        default:
+                            doorX = 0;
+                            doorY = 0;
+                    }
                     break;
                 case 7:
-                    background(255);
+                    switch (side) {
+                        case 0: // top side
+                            doorX = random(width);
+                            doorY = 0;
+                        break;
+                        case 1: // right side
+                            doorX = width - squareSize;
+                            doorY = random(height);
+                        break;
+                        case 2: // bottom side
+                            doorX = random(width);
+                            doorY = height - squareSize;
+                        break;
+                        case 3: // left side
+                            doorX = 0;
+                            doorY = random(height);
+                        break;
+                        default:
+                            doorX = 0;
+                            doorY = 0;
+                    }
                     break;
                 case 8:
-                    background(255);
+                    switch (side) {
+                        case 0: // top side
+                            doorX = random(width);
+                            doorY = 0;
+                        break;
+                        case 1: // right side
+                            doorX = width - squareSize;
+                            doorY = random(height);
+                        break;
+                        case 2: // bottom side
+                            doorX = random(width);
+                            doorY = height - squareSize;
+                        break;
+                        case 3: // left side
+                            doorX = 0;
+                            doorY = random(height);
+                        break;
+                        default:
+                            doorX = 0;
+                            doorY = 0;
+                    }
                     break;
                 default:
                     background(255);

@@ -124,7 +124,7 @@ class Initial {
     }
 
 
-    private int fight() {
+    private int fight(int level) {
 
         if ((pej.getX() < 150) && (pej.getY() < 150))
             return level+1;
