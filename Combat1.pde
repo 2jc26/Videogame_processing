@@ -38,7 +38,7 @@ class Combat1 {
         int separation = 65;
         int x = 200;
         int y = 250;
-        this.nivel = 2;
+        this.nivel = nivel;
 
         if (this.nivel == 1) {
             configFire(availableWidth, separation, x, y, nivel, cantidad, indexer);
