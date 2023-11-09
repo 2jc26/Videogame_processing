@@ -27,13 +27,13 @@ class Initial {
         this.skinColor = skinColor;
     }
 
-    public int draw (int x) {
+    public int draw (int level) {
 
         background(255);
         pej.idleFront(hairColor, clothesColor, skinColor);
         mage.idleFront();
         movement();
-        return fight();
+        return fight(level);
     }
 
     private void movement() {
@@ -124,11 +124,11 @@ class Initial {
     }
 
 
-    private int fight() {
+    private int fight(int level) {
 
         if ((pej.getX() < 150) && (pej.getY() < 150))
-            return 1;
+            return level+1;
         else
-            return 0;
+            return level;
     }
 }
