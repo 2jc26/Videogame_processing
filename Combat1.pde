@@ -38,34 +38,44 @@ class Combat1 {
         int separation = 65;
         int x = 200;
         int y = 250;
-        this.nivel = nivel;
+        this.nivel = 2;
 
-        if (nivel == 1) {
-            for (int i = 0; i < cantidad; i++) {
-                fireballs.add(new Fireball(x, y, 1, 0.5, indexer.getIndex()));
-                if (x + separation <= availableWidth+inicial) {
-                    x += separation;
-                } else {
-                    y += separation;
-                    x = 200;
-                }
-            }
-        } else if (nivel == 2) {
-            int multiplier = 1;
-            for (int i = 0; i < 1; i++) {
-                spears.add(new Spear(500, y, 3, multiplier*0.5, indexer.getIndex()));
-                if (y + separation <= availableWidth+inicial) {
-                    y += separation;
-                } else {
-                    multiplier *= -1;
-                    x += separation;
-                    y = 200;
-                }
-            }
-        } else if (nivel == 3) {
-
+        if (this.nivel == 1) {
+            configFire(availableWidth, separation, x, y, nivel, cantidad, indexer);
+        } else if (this.nivel == 2) {
+            configSpare(availableWidth, separation, x, y, nivel, 7, indexer);
+        } else if (this.nivel == 3) {
+            configFire(availableWidth, separation, x, y, nivel, cantidad, indexer);
+            configSpare(availableWidth, separation, x, y, nivel, 7, indexer);
         }
 
+    }
+
+    public void configFire(int availableWidth, int separation, int x, int y, int nivel, int cantidad, Indexer indexer) {
+        for (int i = 0; i < cantidad; i++) {   
+            fireballs.add(new Fireball(x, y, 1, 0.5, indexer.getIndex()));
+            if (x + separation <= availableWidth+inicial) {
+                x += separation;
+            } else {
+                y += separation;
+                x = 200;
+            }
+        }
+    } 
+
+    public void configSpare(int availableWidth, int separation, int x, int y, int nivel, int cantidad, Indexer indexer) {
+        int multiplier = 1;
+        for (int i = 0; i < 7; i++) {
+            int xSpare = int(random(50, x));
+            spears.add(new Spear(xSpare, y, 4, multiplier*0.5, indexer.getIndex()));
+            if (y + separation <= availableWidth+inicial) {
+                y += separation;
+            } else {
+                multiplier *= -1;
+                x += separation;
+                y = 200;
+            }
+        }
     }
 
     public void draw() {
@@ -163,7 +173,7 @@ class Combat1 {
             //         listObjSec.remove(Integer.valueOf(spears.get(i).getIndexValue()));
             //     }
             // }
-            // spears.get(i).move(inicial,limit+inicial,inicial,limit+inicial);
+            spears.get(i).move(inicial,limit+inicial,inicial,limit+inicial);
             // TODO
             // sector = setSector(spears.get(i).getX(), spears.get(i).getY(), spears.get(i).getTamXMax(), spears.get(i).getTamYMax());
             // listObjSec = mapTable.get(sector);
@@ -183,9 +193,8 @@ class Combat1 {
             //         listObjSec.add(spears.get(i).getIndexValue());
             //     }
             // }
-            if (spears.get(i).colision(emblem.getX(), emblem.getY(), emblem.getTamXMax(), emblem.getTamYMax())) {
-                // emblem.lostLife();
-                print("chocó")
+            if (spears.get(i).colision(emblem.minX(), emblem.minY(), emblem.maxX(), emblem.maxY())) {
+                emblem.lostLife();
             }
             
         }
@@ -313,4 +322,9 @@ class Combat1 {
             moveDownRight = false;
     }
 
+    void mousePressed() {
+        if (mouseButton == LEFT) {
+            
+        }
+    }
 }

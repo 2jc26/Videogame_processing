@@ -191,4 +191,20 @@ class Emblem {
         this.y = y;
     }
 
+    public int minX() {
+        return x-20;
+    }
+
+    public int maxX() {
+        return x+20;
+    }
+
+    public int minY() {
+        return y-23;
+    }
+
+    public int maxY() {
+        return y+23;
+    }
+
 }

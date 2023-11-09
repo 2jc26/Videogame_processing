@@ -21,8 +21,8 @@ class Spear {
     }
 
     private void changeLimits() {
-        tamXMax = 28 * 4 * tam;
-        tamYMax = 28 * 4 * tam;
+        tamXMax = 22 * 4 * tam;
+        tamYMax = 21 * 4 * tam;
     }
 
     void draw() {
@@ -87,20 +87,36 @@ class Spear {
     boolean colision(int xObj, int yObj, float maxXobj, float maxYObj) {
         if (colisionB) return false;
         colisionB = true;
-        if (xObj > int(x-122*4*tam) && xObj < x + tamXMax && yObj > y && yObj < y + tamYMax) {
-            return true;
-        }
-        if (xObj + maxXobj > int(x-122*4*tam) && xObj + maxXobj < x + tamXMax && yObj > y && yObj < y + tamYMax) {
-            return true;
-        }
-        if (xObj > int(x-122*4*tam) && xObj < x + tamXMax && yObj + maxYObj > y && yObj + maxYObj < y + tamYMax) {
-            return true;
-        }
-        if (xObj + maxXobj > int(x-122*4*tam) && xObj + maxXobj < x + tamXMax && yObj + maxYObj > y && yObj + maxYObj < y + tamYMax) {
+        if ((xObj < (x + tamXMax)) && ((maxXobj) > int(minX())) && (yObj < (y + tamYMax)) && ((maxYObj) > y)) {
+            // print("colision:  "+"xEmblema: "+xObj+", yEmblema: "+yObj+", xFinEmblema: "+maxXobj+", yFinEmblema: "+maxYObj+"\nxMinSpare: "+minX()+", yMinSpare: "+y+", xMaxSpare: "+(x+tamXMax)+", yMaxSpare: "+(y+tamYMax)+"\n");
             return true;
         }
         colisionB = false;
         return false;
+    }
+
+    int getIndex() {
+        return index;
+    }
+
+    int getX() {
+        return x;
+    }
+
+    int getY() {
+        return y;
+    }
+
+    void setX(int x) {
+        this.x = x;
+    }
+
+    void setY(int y) {
+        this.y = y;
+    }
+
+    float minX() {
+        return x-125*4*tam;
     }
 
 }
