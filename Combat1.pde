@@ -78,7 +78,7 @@ class Combat1 {
         }
     }
 
-    public void draw() {
+    public int draw(int p) {
         movement();
         if (emblem.getVida() > 0) {
             background(255);
@@ -128,7 +128,10 @@ class Combat1 {
             rect(inicial-15, inicial+limit+40, healtBarWidth, 20);
         }
 
+
+        return p;
     }
+
 
     private void fireBallsNivel() {
         for (int i = 0; i < fireballs.size(); i++) {

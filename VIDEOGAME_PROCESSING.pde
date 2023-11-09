@@ -8,7 +8,11 @@ Emblem emblem;
 Combat1 combat1;
 Initial inicial;
 Indexer indexer;
+Dungeon dungeon;
 Menu menu;
+St st;
+Rewards rewards;
+
 
 color blueColor = #52a3cc;
 color redColor = #8c0e54;
@@ -37,15 +41,16 @@ void setup() {
     pej = new Fighter(500,500,1);
     mage = new Mage(100,100,0.5);
     emblem = new Emblem(480,700,0.5);
-    fireball = new Fireball(400,750,1, 0.5, 0);
     combat1 = new Combat1(emblem, 16, indexer, 2);
+    dungeon = new Dungeon(pej, clothesColor, hairColor, skinColor);
     inicial = new Initial(pej, mage, emblem, clothesColor, hairColor, skinColor);
-    spear = new Spear(400,300,1, 4, 0);
     menu = new Menu("Principal", cp5);
+    st = new St();
+    rewards = new Rewards();
 
 
-    lines = loadStrings("./story/letra.txt");
-    println(lines);
+    // lines = loadStrings("./story/letra.txt");
+    // println(lines);
 }
 
 void draw() {

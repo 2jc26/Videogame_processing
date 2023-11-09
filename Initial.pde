@@ -27,7 +27,7 @@ class Initial {
         this.skinColor = skinColor;
     }
 
-    public int draw () {
+    public int draw (int x) {
 
         background(255);
         pej.idleFront(hairColor, clothesColor, skinColor);

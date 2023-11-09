@@ -1,4 +1,4 @@
-class ST {
+class St {
     String[] lines;
     int fontSize = 20;
 
@@ -11,9 +11,10 @@ class ST {
         println(lines);
     }
 
-    void draw() {
+    int draw(int p) {
         background(255);
         fill(0);
+        return p;
     }
 
 }
