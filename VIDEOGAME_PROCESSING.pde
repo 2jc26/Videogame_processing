@@ -2,7 +2,7 @@ Fighter pej;
 Mage mage;
 Emblem emblem;
 Fireball fireball;
-Minigame1 minigame1;
+Combat1 combat1;
 Initial inicial;
 Indexer indexer;
 
@@ -27,25 +27,23 @@ void setup() {
     mage = new Mage(100,100,0.5);
     emblem = new Emblem(480,700,0.5);
     fireball = new Fireball(400,750,1, 0.5, 0);
-    minigame1 = new Minigame1(emblem, 16, indexer);
+    combat1 = new Combat1(emblem, 16, indexer);
     inicial = new Initial(pej, mage, emblem, fireball, clothesColor, hairColor, skinColor);
-    spear = new Spear(400,300,1, 4, 0);
 }
 
 void draw() {
-    // switch (screen) {
-    //     case 0:
-    //         screen = inicial.draw();
-    //         break;
-    //     case 1:
-    //         minigame1.draw();
-    //         break;
-    //     default :
+    switch (screen) {
+        case 0:
+            screen = inicial.draw();
+            break;
+        case 1:
+            combat1.draw();
+            break;
+        default :
             
-    //     break;	
+        break;	
 
-    // }
-    spear.draw();
+    }
 }
 
 

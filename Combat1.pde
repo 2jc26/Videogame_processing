@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 
-class Minigame1 {
+class Combat1 {
     
     Emblem emblem;
 
@@ -20,12 +20,14 @@ class Minigame1 {
 
     ArrayList<Fireball> fireballs = new ArrayList<Fireball>();
 
+    Spear spear = new Spear(700,300,1,0.5,0);
+
     HashMap<Integer, ArrayList<Integer>> mapTable = new HashMap<Integer, ArrayList<Integer>>();
 
     int limit = 560;
     int inicial = 200;
 
-    public Minigame1(Emblem emblem, int cantidad, Indexer indexer) {
+    public Combat1(Emblem emblem, int cantidad, Indexer indexer) {
         this.emblem = emblem;
 
         int availableWidth = 500;
@@ -81,6 +83,8 @@ class Minigame1 {
 
 
             }
+
+            spear.draw();
             emblem.draw();
 
             int[] sectorEmblema = sectorEmblema(emblem.minXVal(), emblem.minYVal(), emblem.getTamXMax(), emblem.getTamYMax(), fireballs.get(0).getTamXMax(), fireballs.get(0).getTamYMax());
