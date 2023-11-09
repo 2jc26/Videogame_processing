@@ -5,7 +5,6 @@ ControlP5 cp5;
 Fighter pej;
 Mage mage;
 Emblem emblem;
-Fireball fireball;
 Combat1 combat1;
 Initial inicial;
 Indexer indexer;
@@ -22,7 +21,13 @@ color skinColor = #e5beac;
 
 int screen = 1;
 
-Spear spear;
+String[] story1;
+String[] story2;
+String[] story3;
+
+String[] recompensa1;
+String[] recompensa2;
+String[] recompensa3;
 
 void setup() {
     size(1000,1000);
@@ -37,6 +42,10 @@ void setup() {
     inicial = new Initial(pej, mage, emblem, clothesColor, hairColor, skinColor);
     spear = new Spear(400,300,1, 4, 0);
     menu = new Menu("Principal", cp5);
+
+
+    lines = loadStrings("./story/letra.txt");
+    println(lines);
 }
 
 void draw() {
