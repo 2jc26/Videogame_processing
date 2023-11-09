@@ -6,7 +6,7 @@ Fighter pej;
 Mage mage;
 Emblem emblem;
 Fireball fireball;
-Minigame1 minigame1;
+Combat1 combat1;
 Initial inicial;
 Indexer indexer;
 Menu menu;
@@ -20,7 +20,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 0;
+int screen = 1;
 
 Spear spear;
 
@@ -33,8 +33,8 @@ void setup() {
     mage = new Mage(100,100,0.5);
     emblem = new Emblem(480,700,0.5);
     fireball = new Fireball(400,750,1, 0.5, 0);
-    minigame1 = new Minigame1(emblem, 16, indexer);
-    inicial = new Initial(pej, mage, emblem, fireball, clothesColor, hairColor, skinColor);
+    combat1 = new Combat1(emblem, 16, indexer, 2);
+    inicial = new Initial(pej, mage, emblem, clothesColor, hairColor, skinColor);
     spear = new Spear(400,300,1, 4, 0);
     menu = new Menu("Principal", cp5);
 }
@@ -52,6 +52,7 @@ void draw() {
                 minigame1.draw();
                 break;
         }
+
     }
 }
 
