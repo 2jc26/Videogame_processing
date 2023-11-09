@@ -57,7 +57,7 @@ void setup() {
 
 void draw() {
 
-    st.draw(1,24);
+    // st.draw(1,24);
 
     if (menu.getState().equals("Principal"))
         menu.draw();
@@ -85,7 +85,7 @@ void draw() {
                 screen = rewards.draw(screen);
                 break;
             case 7:
-                screen = st.draw(screen);
+                screen = st.draw(screen,24);
                 break;
             case 8:
                 screen = dungeon.draw(screen);
@@ -106,7 +106,7 @@ void draw() {
                 screen = dungeon.draw(screen);
                 break;
             case 14:
-                screen = st.draw(screen);
+                screen = st.draw(screen,24);
                 break;
             case 15:
                 screen = dungeon.draw(screen);
@@ -115,7 +115,7 @@ void draw() {
                 screen = dungeon.draw(screen);
                 break;
             case 17:
-                screen = st.draw(screen);
+                screen = st.draw(screen,24);
                 break;
         }
 
