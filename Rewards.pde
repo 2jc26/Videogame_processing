@@ -19,6 +19,7 @@ class Rewards {
 
 
     int draw(int p) {
+        background(255);
         image(cofreCerrado, 400, 450, 200, 200);
         click(); 
         textSize(20);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
@@ -26,10 +27,15 @@ class Rewards {
         text(textos[0], 100, 100);
 
         // TODO: change window
-        if(isClicked) {
-            print("hoas");
+        if(keyPressed) {
+            keyPressed();
         }
-        return p++;
+        if (isClicked) {
+            isDrawn = true;
+            isClicked = false;
+            p++;
+        }
+        return p;
     }
 
     void click() {
@@ -42,7 +48,7 @@ class Rewards {
     }
 
     void keyPressed() {
-        if (keyCode == UP) {
+        if (key == ' ') {
             isClicked = true;
         }
     }

@@ -12,7 +12,9 @@ class St {
     }
 
     int draw(int p, int wordsPerLine) {
+
         if (!isDrawn) {
+            background(255);
             isDrawn = true;
             fill(0);
             textSize(20);
@@ -37,18 +39,25 @@ class St {
                 text(currentLine, 100, yPosition);
                 yPosition += textAscent() + textDescent();
             }
+
+            textSize(20);
+            fill(0);
+            text("Para continuar pulsa la tecla: \"Espacio\"", 350, 700);  
         }
 
-        textSize(20);
-        fill(0);
-        text("Para continuar pulsa la tecla: \"Espacio\"", 350, 700);  
+        if(keyPressed) {
+            keyPressed();
+        }
 
-        // TODO: button
-        return p++;
+        if (isClicked) {
+            isClicked = false;
+            return p + 1;
+        }
+        return p;
     }
     
     void keyPressed() {
-        if (keyCode == UP) {
+        if (key == ' ') {
             isClicked = true;
         }
     }
