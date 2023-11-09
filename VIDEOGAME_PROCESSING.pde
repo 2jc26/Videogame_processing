@@ -57,19 +57,3 @@ void draw() {
 }
 
 
-// String[] lines;
-// int fontSize = 20;
-
-// File ig = new File("letra.txt")
-
-// void setup() {
-//     size(1000,1000);
-//     background(255);
-//     lines = loadStrings("letra.txt");
-//     println(lines);
-// }
-
-// void draw() {
-//     background(255);
-//     fill(0);
-// }
