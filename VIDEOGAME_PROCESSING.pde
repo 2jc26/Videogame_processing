@@ -1,3 +1,7 @@
+import controlP5.*;
+
+ControlP5 cp5;
+
 Fighter pej;
 Mage mage;
 Emblem emblem;
@@ -5,6 +9,7 @@ Fireball fireball;
 Minigame1 minigame1;
 Initial inicial;
 Indexer indexer;
+Menu menu;
 
 color blueColor = #52a3cc;
 color redColor = #8c0e54;
@@ -22,6 +27,7 @@ Spear spear;
 void setup() {
     size(1000,1000);
     background(255);
+    cp5 = new ControlP5(this);
     indexer = new Indexer();
     pej = new Fighter(500,500,1);
     mage = new Mage(100,100,0.5);
@@ -30,22 +36,23 @@ void setup() {
     minigame1 = new Minigame1(emblem, 16, indexer);
     inicial = new Initial(pej, mage, emblem, fireball, clothesColor, hairColor, skinColor);
     spear = new Spear(400,300,1, 4, 0);
+    menu = new Menu("Principal", cp5);
 }
 
 void draw() {
-    // switch (screen) {
-    //     case 0:
-    //         screen = inicial.draw();
-    //         break;
-    //     case 1:
-    //         minigame1.draw();
-    //         break;
-    //     default :
-            
-    //     break;	
 
-    // }
-    spear.draw();
+    if (menu.getState().equals("Principal"))
+        menu.draw();
+    else {
+        switch (screen) {
+            case 0:
+                screen = inicial.draw();
+                break;
+            case 1:
+                minigame1.draw();
+                break;
+        }
+    }
 }
 
 
