@@ -36,7 +36,12 @@ String[] recompensa3 = new String[1];
 void setup() {
     size(1000,1000);
     background(255);
-    // story1 = loadStrings("./story/story1.txt");
+    story1 = loadStrings("./story/story1.txt");
+    story2 = loadStrings("./story/story2.txt");
+    story3 = loadStrings("./story/story3.txt");
+    recompensa1 = loadStrings("./rewards/reward1.txt");
+    recompensa2 = loadStrings("./rewards/reward2.txt");
+    recompensa3 = loadStrings("./rewards/reward3.txt");
     cp5 = new ControlP5(this);
     indexer = new Indexer();
     pej = new Fighter(500,500,1);
@@ -47,16 +52,12 @@ void setup() {
     inicial = new Initial(pej, mage, emblem, clothesColor, hairColor, skinColor);
     menu = new Menu("Principal", cp5);
     st = new St(story1);
-    rewards = new Rewards();
-
-
-    // lines = loadStrings("./story/letra.txt");
-    // println(lines);
+    rewards = new Rewards(recompensa1);
 }
 
 void draw() {
 
-    // st.draw(1);
+    // st.draw(1,24);
 
     if (menu.getState().equals("Principal"))
         menu.draw();
@@ -84,7 +85,7 @@ void draw() {
                 screen = rewards.draw(screen);
                 break;
             case 7:
-                screen = st.draw(screen);
+                screen = st.draw(screen,24);
                 break;
             case 8:
                 screen = dungeon.draw(screen);
@@ -105,7 +106,7 @@ void draw() {
                 screen = dungeon.draw(screen);
                 break;
             case 14:
-                screen = st.draw(screen);
+                screen = st.draw(screen,24);
                 break;
             case 15:
                 screen = dungeon.draw(screen);
@@ -114,7 +115,7 @@ void draw() {
                 screen = dungeon.draw(screen);
                 break;
             case 17:
-                screen = st.draw(screen);
+                screen = st.draw(screen,24);
                 break;
         }
 
