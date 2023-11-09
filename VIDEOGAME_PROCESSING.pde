@@ -25,17 +25,18 @@ color skinColor = #e5beac;
 
 int screen = 1;
 
-String[] story1;
-String[] story2;
-String[] story3;
+String[] story1 = new String[1];
+String[] story2 = new String[1];
+String[] story3 = new String[1];
 
-String[] recompensa1;
-String[] recompensa2;
-String[] recompensa3;
+String[] recompensa1 = new String[1];
+String[] recompensa2 = new String[1];
+String[] recompensa3 = new String[1];
 
 void setup() {
     size(1000,1000);
     background(255);
+    // story1 = loadStrings("./story/story1.txt");
     cp5 = new ControlP5(this);
     indexer = new Indexer();
     pej = new Fighter(500,500,1);
@@ -45,7 +46,7 @@ void setup() {
     dungeon = new Dungeon(pej, clothesColor, hairColor, skinColor);
     inicial = new Initial(pej, mage, emblem, clothesColor, hairColor, skinColor);
     menu = new Menu("Principal", cp5);
-    st = new St();
+    st = new St(story1);
     rewards = new Rewards();
 
 
@@ -54,6 +55,8 @@ void setup() {
 }
 
 void draw() {
+
+    // st.draw(1);
 
     if (menu.getState().equals("Principal"))
         menu.draw();

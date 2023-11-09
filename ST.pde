@@ -4,17 +4,17 @@ class St {
 
     // File ig = new File("./story/letra.txt")
 
-    void ST() {
-        size(1000,1000);
-        background(255);
-        lines = loadStrings("./story/letra.txt");
-        println(lines);
+    public St(String [] arreglo) {
+        lines = arreglo;
     }
 
     int draw(int p) {
-        background(255);
-        fill(0);
-        return p;
+        for (int i = 0; i < lines.length; i++) {
+            text(lines[i], 10, p);
+            p += fontSize;
+        }
+        
+        return p++;
     }
 
 }

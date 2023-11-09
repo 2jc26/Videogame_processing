@@ -6,6 +6,10 @@ class Rewards {
 
 
     int draw(int p) {
-        return p;
+
+
+
+        // TODO: button
+        return p++;
     }
 }
