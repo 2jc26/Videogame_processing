@@ -3,7 +3,7 @@ class St {
     String[] textos;
     int yPosition; // Posición vertical actual
     boolean isDrawn = false;
-    
+
     boolean isClicked = false;
 
     public St (String [] textos) {
@@ -47,10 +47,10 @@ class St {
         return p++;
     }
     
-}
-
-void keyPressed() {
-    if (keyCode == UP) {
-        isClicked = true;
+    void keyPressed() {
+        if (keyCode == UP) {
+            isClicked = true;
+        }
     }
 }
+
