@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 class Dungeon {
 
     Fighter pej;
@@ -6,6 +8,12 @@ class Dungeon {
     color hairColor;
     color skinColor;
 
+    private HashMap<Integer, Integer> dungeons = new HashMap<Integer, Integer>();
+    private int squareSize = 50;
+    private int cont = 1;
+    private int side;
+    private float doorX;
+    private float doorY;
     private boolean moveUp = false;
     private boolean moveDown = false;
     private boolean moveLeft = false;
@@ -21,14 +29,90 @@ class Dungeon {
         this.clothesColor = clothesColor;
         this.hairColor = hairColor;
         this.skinColor = skinColor;
+        dungeons.put(0, 1);
+        dungeons.put(4, 2);
+        dungeons.put(5, 3);
+        dungeons.put(8, 4);
+        dungeons.put(11, 5);
+        dungeons.put(13, 6);
+        dungeons.put(15, 7);
+        dungeons.put(16, 8);
     }
 
-    public int draw (int x) {
-
+    public int draw (int level) {
         background(255);
+        drawLevel(dungeons.get(level));
         pej.idleFront(hairColor, clothesColor, skinColor);
         movement();
-        return fight();
+
+        int newLevel = collision(level);
+
+        if(newLevel != level) {
+            cont +=1;
+            return newLevel;
+        }
+        else
+            return level;
+    }
+
+    private void drawLevel(int level) {
+        if (cont == 1){
+            side = (int) random(4); // 0: top, 1: right, 2: bottom, 3: left
+            cont -= 1;
+
+            switch (level) {
+                case 1:
+                    switch (side) {
+                        case 0: // top side
+                            doorX = random(width);
+                            doorY = 0;
+                        break;
+                        case 1: // right side
+                            doorX = width - squareSize;
+                            doorY = random(height);
+                        break;
+                        case 2: // bottom side
+                            doorX = random(width);
+                            doorY = height - squareSize;
+                        break;
+                        case 3: // left side
+                            doorX = 0;
+                            doorY = random(height);
+                        break;
+                        default:
+                            doorX = 0;
+                            doorY = 0;
+                    }
+                    break;
+                case 2:
+                    background(255);
+                    break;
+                case 3:
+                    background(255);
+                    break;
+                case 4:
+                    background(255);
+                    break;
+                case 5:
+                    background(255);
+                    break;
+                case 6:
+                    background(255);
+                    break;
+                case 7:
+                    background(255);
+                    break;
+                case 8:
+                    background(255);
+                    break;
+                default:
+                    background(255);
+                    break;
+            }
+        }
+
+        fill(random(255), random(255), random(255));
+        rect(doorX, doorY, squareSize, squareSize);
     }
 
     private void movement() {
@@ -119,11 +203,11 @@ class Dungeon {
     }
 
 
-    private int fight() {
+    private int collision(int level) {
 
-        if ((pej.getX() < 150) && (pej.getY() < 150))
-            return 1;
+        if ((pej.getX() > doorX) && (pej.getY() > doorY) && (pej.getX() < doorX + squareSize) && (pej.getY() < doorY + squareSize))
+            return level + 1;
         else
-            return 0;
+            return level;
     }
 }

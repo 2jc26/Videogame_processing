@@ -27,6 +27,7 @@ class Combat1 {
     ArrayList<Spear> spears = new ArrayList<Spear>();
 
     private int nivel;
+    int tiempoInicio = millis();
 
     int limit = 560;
     int inicial = 200;
@@ -78,7 +79,7 @@ class Combat1 {
         }
     }
 
-    public int draw(int p) {
+    public int draw(int level) {
         movement();
         if (emblem.getVida() > 0) {
             background(255);
@@ -126,10 +127,24 @@ class Combat1 {
 
             fill(0, 255, 0);
             rect(inicial-15, inicial+limit+40, healtBarWidth, 20);
+
+            // Cálculo del tiempo transcurrido
+            int tiempoActual = millis();
+            int tiempoTranscurrido = tiempoActual - tiempoInicio;
+            int tiempoEspera = 5000; // 5000 milisegundos son 5 segundos
+
+            if (tiempoTranscurrido >= tiempoEspera) {
+                tiempoInicio = millis(); // Reiniciar el tiempo de inicio
+                return level + 1; // Aumentar el nivel en 1
+            } 
+            else {
+                return level; // Retornar el nivel sin cambios
+            }
+
         }
 
 
-        return p;
+        return level;
     }
 
 
