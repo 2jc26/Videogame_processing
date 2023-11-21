@@ -21,8 +21,8 @@ class Fireball {
     }
     
     private void changeLimits() {
-        tamXMax = 28 * 4 * tam;
-        tamYMax = 20 * 4 * tam;
+        tamXMax = 22 * 4 * tam;
+        tamYMax = 14 * 4 * tam;
     }
     
     public void draw() {
@@ -160,16 +160,16 @@ class Fireball {
         return tamXMax;
     }
 
-    public void setTamXMax(float tamXMax) {
-        this.tamXMax = tamXMax;
-    }
-
     public float getTamYMax() {
         return tamYMax;
     }
 
-    public void setTamYMax(float tamYMax) {
-        this.tamYMax = tamYMax;
+    public int maxX() {
+        return this.x + int(tamXMax);
+    }
+
+    public int maxY() {
+        return this.y + int(tamYMax);
     }
 
     public int getIndexValue() {

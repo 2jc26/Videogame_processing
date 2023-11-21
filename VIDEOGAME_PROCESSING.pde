@@ -1,7 +1,6 @@
 import controlP5.*;
 
 ControlP5 cp5;
-
 Fighter pej;
 Mage mage;
 Emblem emblem;
@@ -23,7 +22,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 0;
+int screen = 2;
 
 String[] story1 = new String[1];
 String[] story2 = new String[1];

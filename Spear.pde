@@ -87,8 +87,7 @@ class Spear {
     boolean colision(int xObj, int yObj, float maxXobj, float maxYObj) {
         if (colisionB) return false;
         colisionB = true;
-        if ((xObj < (x + tamXMax)) && ((maxXobj) > int(minX())) && (yObj < (y + tamYMax)) && ((maxYObj) > y)) {
-            // print("colision:  "+"xEmblema: "+xObj+", yEmblema: "+yObj+", xFinEmblema: "+maxXobj+", yFinEmblema: "+maxYObj+"\nxMinSpare: "+minX()+", yMinSpare: "+y+", xMaxSpare: "+(x+tamXMax)+", yMaxSpare: "+(y+tamYMax)+"\n");
+        if ((xObj < (maxX())) && ((maxXobj) > int(minX())) && (yObj < (maxY())) && ((maxYObj) > minY())) {
             return true;
         }
         colisionB = false;
@@ -116,7 +115,19 @@ class Spear {
     }
 
     float minX() {
-        return x-125*4*tam;
+        return this.x-126*4*tam;
+    }
+
+    float maxX() {
+        return this.x+tamXMax;
+    }
+
+    float minY() {
+        return this.y;
+    }
+
+    float maxY() {
+        return this.y+tamYMax;
     }
 
 }

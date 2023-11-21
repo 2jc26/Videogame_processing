@@ -19,16 +19,8 @@ class Emblem {
     }
 
     private void changeLimits() {
-        tamXMax = 41 * 4 * tam;
-        tamYMax = 45 * 4 * tam;
-    }
-
-    public int minXVal() {
-        return (int) (this.x - tamXMax/2);
-    }
-
-    public int minYVal() {
-        return (int) (this.y- tamYMax/2);
+        tamXMax = maxX() - minX();
+        tamYMax = maxY() - minY();
     }
 
 
@@ -116,7 +108,7 @@ class Emblem {
     }
 
     public boolean collide(int xObj, int yObj, float tamXObj, float tamYObj) {
-        if (this.x + tamXMax > x && this.x < xObj + tamXObj && this.y + tamYMax > y && this.y < yObj + tamYObj) {
+        if (xObj + tamXObj > minX() && xObj < maxX() && yObj + tamYObj > minY() && yObj < maxY()) {
             lostLife();
             return true;
         }
@@ -175,14 +167,6 @@ class Emblem {
         this.tam = tam;
     }
 
-    public void setTamXMax(float tamXMax) {
-        this.tamXMax = tamXMax;
-    }
-
-    public void setTamYMax(float tamYMax) {
-        this.tamYMax = tamYMax;
-    }
-
     public void setX(int x) {
         this.x = x;
     }
@@ -192,19 +176,19 @@ class Emblem {
     }
 
     public int minX() {
-        return x-20;
+        return x-int(10*4*tam);
     }
 
     public int maxX() {
-        return x+20;
+        return x+int(11*4*tam);
     }
 
     public int minY() {
-        return y-23;
+        return y-int(11.5*4*tam);
     }
 
     public int maxY() {
-        return y+23;
+        return y+int(11.5*4*tam);
     }
 
 }
