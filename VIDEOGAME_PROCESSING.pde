@@ -11,6 +11,7 @@ Dungeon dungeon;
 Menu menu;
 St st;
 Rewards rewards;
+Minigame2 minigame2;
 
 
 color blueColor = #52a3cc;
@@ -57,6 +58,7 @@ void setup() {
     rewards = new Rewards(recompensa1);
     nombre = "";
     registered = false;
+    minigame2 = new Minigame2(emblem);
 }
 
 void draw() {
@@ -127,6 +129,9 @@ void draw() {
                 break;
             case 17:
                 screen = st.draw(screen,24);
+                break;
+            case 18:
+                screen = minigame2.draw(screen);
                 break;
         }
 
