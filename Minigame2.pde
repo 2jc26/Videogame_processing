@@ -141,7 +141,8 @@ class Minigame2 {
                 moving = false;
                 dir = "none";
             } else {
-                player.move(dirX,dirY);
+                player.setX(player.getX()+dirX);
+                player.setY(player.getY()+dirY);
                 if (losas.contains(pos)) {
                     fill(#2980B9);
                     rect(pos[0]-tamCell/2,pos[1]-tamCell/2,tamCell,tamCell);
