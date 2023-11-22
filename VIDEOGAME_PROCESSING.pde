@@ -23,7 +23,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 0;
+int screen = 18;
 
 String[] story1 = new String[1];
 String[] story2 = new String[1];
@@ -62,9 +62,9 @@ void setup() {
 }
 
 void draw() {
-    if (menu.getState().equals("Principal"))
-        menu.draw();
-    else {
+    // if (menu.getState().equals("Principal"))
+    //     menu.draw();
+    // else {
         switch (screen) {
             case 0:
                 if (registered) {
@@ -135,7 +135,7 @@ void draw() {
                 break;
         }
 
-    }
+    // }
 }
 
 void keyPressed() {

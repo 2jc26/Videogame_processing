@@ -144,19 +144,78 @@ class Minigame2 {
         }
 
         if (moving) {
-            for (int i=0; i<walls.get(dir).size(); i++) {
-                if (walls.get(dir).get(i).equals(position)) {
-                    moving = false;
-                    dir = "none";
-                } else {
-                    String[] pos = walls.get(dir).get(i).split(",");
-                    player.setX(player.getX()+dirX);
-                    player.setY(player.getY()+dirY);
-                    if (walls.get(dir).get(i).equals(position)) {
-                        fill(#2980B9);
-                        rect(int(pos[0])-tamCell/2,int(pos[1])-tamCell/2,tamCell,tamCell);
+            if (dir.equals("up")) {
+                for (int i=0; i<walls.get("up").size(); i++) {
+                    if (walls.get("up").get(i).equals(position)) {
+                        String[] pos = walls.get("up").get(i).split(",");
+                        emblem.setX(int(pos[0]));
+                        emblem.setY(int(pos[1]));
+                        moving = false;
+                        dir = "none";
+                    } else {
+                        String[] pos = walls.get("up").get(i).split(",");
+                        player.setX(player.getX()+dirX);
+                        player.setY(player.getY()+dirY);
+                        if (walls.get("up").get(i).equals(position)) {
+                            fill(#2980B9);
+                            rect(int(pos[0])-tamCell/2,int(pos[1])-tamCell/2,tamCell,tamCell);
+                        }
                     }
                 }
+            } else if (dir.equals("down")) {
+                for (int i=0; i<walls.get("down").size(); i++) {
+                    if (walls.get("down").get(i).equals(position)) {
+                        String[] pos = walls.get("down").get(i).split(",");
+                        emblem.setX(int(pos[0]));
+                        emblem.setY(int(pos[1]));
+                        moving = false;
+                        dir = "none";
+                    } else {
+                        String[] pos = walls.get("down").get(i).split(",");
+                        player.setX(player.getX()+dirX);
+                        player.setY(player.getY()+dirY);
+                        if (walls.get("down").get(i).equals(position)) {
+                            fill(#2980B9);
+                            rect(int(pos[0])-tamCell/2,int(pos[1])-tamCell/2,tamCell,tamCell);
+                        }
+                    }
+                }
+            } else if (dir.equals("left")) {
+                for (int i=0; i<walls.get("left").size(); i++) {
+                    if (walls.get("left").get(i).equals(position)) {
+                        String[] pos = walls.get("left").get(i).split(",");
+                        emblem.setX(int(pos[0]));
+                        emblem.setY(int(pos[1]));
+                        moving = false;
+                        dir = "none";
+                    } else {
+                        String[] pos = walls.get("left").get(i).split(",");
+                        player.setX(player.getX()+dirX);
+                        player.setY(player.getY()+dirY);
+                        if (walls.get("left").get(i).equals(position)) {
+                            fill(#2980B9);
+                            rect(int(pos[0])-tamCell/2,int(pos[1])-tamCell/2,tamCell,tamCell);
+                        }
+                    }
+                }
+            } else if (dir.equals("right")) {
+                for (int i=0; i<walls.get("right").size(); i++) {
+                    if (walls.get("right").get(i).equals(position)) {
+                        String[] pos = walls.get("right").get(i).split(",");
+                        emblem.setX(int(pos[0]));
+                        emblem.setY(int(pos[1]));
+                        moving = false;
+                        dir = "none";
+                    } else {
+                        String[] pos = walls.get("right").get(i).split(",");
+                        player.setX(player.getX()+dirX);
+                        player.setY(player.getY()+dirY);
+                        if (walls.get("right").get(i).equals(position)) {
+                            fill(#2980B9);
+                            rect(int(pos[0])-tamCell/2,int(pos[1])-tamCell/2,tamCell,tamCell);
+                        }
+                    }
+                }  
             }
         }
     }
