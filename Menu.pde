@@ -109,7 +109,7 @@ class Menu {
         cp5.getController("salir").hide();
         cp5.getController("back").show();
         Ranking r = new Ranking();
-        r.draw();
+        r.drawLeadboard();
     }
 
     public void salir() {
