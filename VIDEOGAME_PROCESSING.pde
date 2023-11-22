@@ -11,6 +11,7 @@ Dungeon dungeon;
 Menu menu;
 St st;
 Rewards rewards;
+Minigame2 minigame2;
 
 
 color blueColor = #52a3cc;
@@ -22,7 +23,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 2;
+int screen = 18;
 
 String[] story1 = new String[1];
 String[] story2 = new String[1];
@@ -52,6 +53,7 @@ void setup() {
     menu = new Menu("Principal", cp5);
     st = new St(story1);
     rewards = new Rewards(recompensa1);
+    minigame2 = new Minigame2(emblem);
 }
 
 void draw() {
@@ -113,6 +115,9 @@ void draw() {
                 break;
             case 17:
                 screen = st.draw(screen,24);
+                break;
+            case 18:
+                screen = minigame2.draw(screen);
                 break;
         }
 
