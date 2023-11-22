@@ -22,7 +22,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 2;
+int screen = 0;
 
 String[] story1 = new String[1];
 String[] story2 = new String[1];
@@ -32,8 +32,11 @@ String[] recompensa1 = new String[1];
 String[] recompensa2 = new String[1];
 String[] recompensa3 = new String[1];
 
+String nombre;
+boolean registered;
+
 void setup() {
-    size(1000,1000);
+    size(1000,900);
     background(255);
     story1 = loadStrings("./story/story1.txt");
     story2 = loadStrings("./story/story2.txt");
@@ -52,17 +55,28 @@ void setup() {
     menu = new Menu("Principal", cp5);
     st = new St(story1);
     rewards = new Rewards(recompensa1);
+    nombre = "";
+    registered = false;
 }
 
 void draw() {
-
     if (menu.getState().equals("Principal"))
         menu.draw();
     else {
         switch (screen) {
             case 0:
-                screen = dungeon.draw(screen);
-                break;
+                if (registered) {
+                    screen = dungeon.draw(screen);
+                    break;
+                }
+                else {
+                    background(255);
+                    textSize(32);
+                    fill(0);
+                    text("Ingrese su nombre: ", 400, 400);
+                    text(nombre, 400, 450);
+                    break;
+                }
             case 1:
                 screen = inicial.draw(screen);
                 break;
@@ -116,6 +130,20 @@ void draw() {
                 break;
         }
 
+    }
+}
+
+void keyPressed() {
+    if (keyCode == ENTER) {
+        if (nombre.length() > 0) {
+            registered = true;
+        }
+    } else if (keyCode == BACKSPACE) {
+        if (nombre.length() > 0) {
+            nombre = nombre.substring(0, nombre.length()-1);
+        }
+    } else {
+        nombre += key;
     }
 }
 
