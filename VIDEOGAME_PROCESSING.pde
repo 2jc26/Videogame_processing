@@ -150,6 +150,9 @@ void draw() {
                 break;
             case 19:
                 screen = minigame3.draw(screen);
+                if (screen != 19) {
+                    points += minigame3.getPoints();
+                }
                 break;
             case 20:
                 screen = dungeon.draw(screen);

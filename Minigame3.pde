@@ -41,7 +41,6 @@ class Minigame3 {
         if (letters.size() > 0) {
             text(letters.get(0), (width/2), height / 2);
         } else {
-
             return level + 1;
         }
 
@@ -76,5 +75,9 @@ class Minigame3 {
             default:
                 return "";
         }
+    }
+
+    Integer getPoints() {
+        return points;
     }
 }
