@@ -64,7 +64,7 @@ class Minigame2 {
                             down.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
                             walls.put("down",down);
                         }
-                        if ((j==1 || ( i!=3)) || (j==2 && i==3) || (j==3 && i==5) || (j==5 && i==3) || (j==6 && i==4)) {
+                        if ((j==1 && i!=3) || (j==2 && i==3) || (j==3 && i==5) || (j==5 && i==3) || (j==6 && i==4)) {
                             ArrayList<String> left = walls.get("left");
                             if (left == null) {
                                 left = new ArrayList<String>();
@@ -144,78 +144,17 @@ class Minigame2 {
         }
 
         if (moving) {
-            if (dir.equals("up")) {
-                for (int i=0; i<walls.get("up").size(); i++) {
-                    if (walls.get("up").get(i).equals(position)) {
-                        String[] pos = walls.get("up").get(i).split(",");
-                        emblem.setX(int(pos[0]));
-                        emblem.setY(int(pos[1]));
-                        moving = false;
-                        dir = "none";
-                    } else {
-                        String[] pos = walls.get("up").get(i).split(",");
-                        player.setX(player.getX()+dirX);
-                        player.setY(player.getY()+dirY);
-                        if (walls.get("up").get(i).equals(position)) {
-                            fill(#2980B9);
-                            rect(int(pos[0])-tamCell/2,int(pos[1])-tamCell/2,tamCell,tamCell);
-                        }
-                    }
+            if (walls.get(dir) != null && dir != "none") {
+                boolean contains = false;
+                if (walls.get(dir).contains(position)) {
+                    contains = true;
                 }
-            } else if (dir.equals("down")) {
-                for (int i=0; i<walls.get("down").size(); i++) {
-                    if (walls.get("down").get(i).equals(position)) {
-                        String[] pos = walls.get("down").get(i).split(",");
-                        emblem.setX(int(pos[0]));
-                        emblem.setY(int(pos[1]));
-                        moving = false;
-                        dir = "none";
-                    } else {
-                        String[] pos = walls.get("down").get(i).split(",");
-                        player.setX(player.getX()+dirX);
-                        player.setY(player.getY()+dirY);
-                        if (walls.get("down").get(i).equals(position)) {
-                            fill(#2980B9);
-                            rect(int(pos[0])-tamCell/2,int(pos[1])-tamCell/2,tamCell,tamCell);
-                        }
-                    }
+                if (contains) {
+                    moving = false;
+                } else {
+                    player.setX(player.getX()+dirX);
+                    player.setY(player.getY()+dirY);
                 }
-            } else if (dir.equals("left")) {
-                for (int i=0; i<walls.get("left").size(); i++) {
-                    if (walls.get("left").get(i).equals(position)) {
-                        String[] pos = walls.get("left").get(i).split(",");
-                        emblem.setX(int(pos[0]));
-                        emblem.setY(int(pos[1]));
-                        moving = false;
-                        dir = "none";
-                    } else {
-                        String[] pos = walls.get("left").get(i).split(",");
-                        player.setX(player.getX()+dirX);
-                        player.setY(player.getY()+dirY);
-                        if (walls.get("left").get(i).equals(position)) {
-                            fill(#2980B9);
-                            rect(int(pos[0])-tamCell/2,int(pos[1])-tamCell/2,tamCell,tamCell);
-                        }
-                    }
-                }
-            } else if (dir.equals("right")) {
-                for (int i=0; i<walls.get("right").size(); i++) {
-                    if (walls.get("right").get(i).equals(position)) {
-                        String[] pos = walls.get("right").get(i).split(",");
-                        emblem.setX(int(pos[0]));
-                        emblem.setY(int(pos[1]));
-                        moving = false;
-                        dir = "none";
-                    } else {
-                        String[] pos = walls.get("right").get(i).split(",");
-                        player.setX(player.getX()+dirX);
-                        player.setY(player.getY()+dirY);
-                        if (walls.get("right").get(i).equals(position)) {
-                            fill(#2980B9);
-                            rect(int(pos[0])-tamCell/2,int(pos[1])-tamCell/2,tamCell,tamCell);
-                        }
-                    }
-                }  
             }
         }
     }
@@ -223,26 +162,28 @@ class Minigame2 {
 
     void keyPressed() {
         if (!moving) {
-            moving = true;
-            if (key == 'w') {
-                dirX = 0;
-                dirY = -1;
-                dir = "up";
-            }
-            if (key == 's'){
-                dirX = 0;
-                dirY = 1;
-                dir = "down";
-            }
-            if (key == 'a'){
-                dirX = -1;
-                dirY = 0;
-                dir = "left";
-            }
-            if (key == 'd'){
-                dirX = 1;
-                dirY = 0;
-                dir = "right";
+            if (key == 'w' || key == 's' || key == 'a' || key == 'd') {
+                moving = true;
+                if (key == 'w') {
+                    dirX = 0;
+                    dirY = -1;
+                    dir = "up";
+                }
+                if (key == 's'){
+                    dirX = 0;
+                    dirY = 1;
+                    dir = "down";
+                }
+                if (key == 'a'){
+                    dirX = -1;
+                    dirY = 0;
+                    dir = "left";
+                }
+                if (key == 'd'){
+                    dirX = 1;
+                    dirY = 0;
+                    dir = "right";
+                }
             }
         }
     }
