@@ -26,14 +26,20 @@ class Minigame2 {
 
     public Minigame2(Emblem player) {
         this.player = player;
-        player.setX(325);
-        player.setY(575);
-        start();
     }
 
-    public void start() {
+    public void start(int level) {
+        points = 0;
         time = millis();
-        started = false;
+        started = true;
+        completed = false;
+        if(level == 1) {
+            player.setX(325);
+            player.setY(475);
+        } else if(level == 2) {
+            player.setX(325);
+            player.setY(525);
+        }
     }
 
     public void paintWalls(int lvl) {
@@ -163,8 +169,8 @@ class Minigame2 {
         background(255);
         paintWalls(level);
         player.draw();
-        if (started) {
-            start();
+        if (!started && !completed) {
+            start(level);
         }
         timePassed = (millis() - time)/1000;
 
@@ -172,8 +178,13 @@ class Minigame2 {
 
         if (losas.size() == 0) {
             completed = true;
+            started = false;
+            setUp = true;
             calculetePoints();
-            screen++;
+            // screen++;
+            if (screen == 7) {
+                screen = 13;
+            }
         }
 
         return screen;

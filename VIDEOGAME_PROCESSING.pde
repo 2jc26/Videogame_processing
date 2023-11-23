@@ -25,7 +25,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 24;
+int screen = 7;
 int points = 0;
 
 String[] story1 = new String[1];
@@ -106,7 +106,7 @@ void draw() {
                 screen = minigame2.draw(screen, 1);
                 if (screen != 7) {
                     minigame2.calculetePoints();
-                    points = minigame2.getPoints();
+                    points += minigame2.getPoints();
                 }
                 break;
             case 8:
@@ -128,7 +128,7 @@ void draw() {
                 screen = minigame2.draw(screen, 2);
                 if (screen != 13) {
                     minigame2.calculetePoints();
-                    points = minigame2.getPoints();
+                    points += minigame2.getPoints();
                 }
                 break;
             case 14:
