@@ -25,6 +25,7 @@ color hairColor = blueColor;
 color skinColor = #e5beac;
 
 int screen = 0;
+int points = 0;
 
 String[] story1 = new String[1];
 String[] story2 = new String[1];
@@ -101,6 +102,10 @@ void draw() {
                 break;
             case 7:
                 screen = minigame2.draw(screen,1);
+                if (screen != 7) {
+                    minigame2.calculetePoints();
+                    points = minigame2.getPoints();
+                }
                 break;
             case 8:
                 screen = inicial.draw(screen);
@@ -119,6 +124,10 @@ void draw() {
                 break;
             case 13:
                 screen = minigame2.draw(screen,2);
+                if (screen != 13) {
+                    minigame2.calculetePoints();
+                    points = minigame2.getPoints();
+                }
                 break;
             case 14:
                 screen = inicial.draw(screen);
