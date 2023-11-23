@@ -25,7 +25,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 24;
+int screen = 19;
 int points = 0;
 
 String[] story1 = new String[1];
