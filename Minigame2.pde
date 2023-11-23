@@ -181,10 +181,7 @@ class Minigame2 {
             started = false;
             setUp = true;
             calculetePoints();
-            // screen++;
-            if (screen == 7) {
-                screen = 13;
-            }
+            screen++
         }
 
         return screen;
