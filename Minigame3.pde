@@ -10,51 +10,67 @@ class Minigame3 {
     int timePassed = 0;
     int points = 0;
 
-
-    ArrayList<Integer> letters = new ArrayList<Integer>();
-    ArrayList<Integer> userLetters = new ArrayList<Integer>();
+    ArrayList<String> letters = new ArrayList<String>();
+    ArrayList<String> userLetters = new ArrayList<String>();
+    String userLettersString = "";
 
     public Minigame3(Emblem player) {
         this.player = player;
         player.setX(325);
         player.setY(575);
+        letters.add("UP");
+        letters.add("DOWN");
+        letters.add("LEFT");
+        letters.add("RIGHT");
+        letters.add("LEFT");
+        letters.add("RIGHT");
+        letters.add("SHIFT");
+        letters.add("CONTROL");
     }
 
     public int draw(int level) {
         background(255);
         player.draw();
-        timePassed = (millis() - time)/1000;
+        timePassed = (millis() - time) / 1000;
 
         textSize(32);
-        text("UP DOWN UP DOWN LEFT RIGHT LEFT RIGHT SHIFT CONTROL " , width/2, (height/2)-100);
-        for (int i = 0; i < letters.size(); i++) {
-            text(letters.get(i), width/2, (height/2) + (i*50));
+        if (letters.size() > 0) {
+            text(letters.get(0), width / 2, height / 2);
+        } else {
+
+            return level + 1;
         }
 
-        if (points > 5) {
-            return screen++;
+        if(keyPressed) {
+            keyPressed();
         }
 
-        return screen;
+        return level;
     }
-
 
     void keyPressed() {
-        if (key == ' ') {
-            for (int i = 0; i < letters.size(); i++) {
-                if (letters.get(i) == userLetters.get(i)) {
-                    points++;
-                }
-                else {
-                    userLetters = new ArrayList<>();
-                    break;
-                }
-            }
+        if (keyCodeToString(keyCode) == letters.get(0)) {
+            points++;
+            letters.remove(0);
         }
-        else {
-            letters.add(keyCode);
-        }
-        
     }
 
+    String keyCodeToString(int code) {
+        switch (code) {
+            case UP:
+                return "UP";
+            case DOWN:
+                return "DOWN";
+            case LEFT:
+                return "LEFT";
+            case RIGHT:
+                return "RIGHT";
+            case SHIFT:
+                return "SHIFT";
+            case CONTROL:
+                return "CONTROL";
+            default:
+                return "";
+        }
+    }
 }
