@@ -20,6 +20,8 @@ class Minigame3 {
         player.setY(575);
         letters.add("UP");
         letters.add("DOWN");
+        letters.add("UP");
+        letters.add("DOWN");
         letters.add("LEFT");
         letters.add("RIGHT");
         letters.add("LEFT");
@@ -30,7 +32,6 @@ class Minigame3 {
 
     public int draw(int level) {
         background(255);
-        player.draw();
         timePassed = (millis() - time) / 1000;
 
         textSize(32);
