@@ -173,11 +173,7 @@ class Minigame2 {
         if (losas.size() == 0) {
             completed = true;
             calculetePoints();
-            if (screen == 7){
-                screen = 8;
-            } else if (screen == 13) {
-                screen = 14;
-            }
+            screen++;
         }
 
         return screen;
