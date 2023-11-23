@@ -26,17 +26,20 @@ class Minigame3 {
         letters.add("RIGHT");
         letters.add("LEFT");
         letters.add("RIGHT");
-        letters.add("SHIFT");
         letters.add("CONTROL");
+        letters.add("SHIFT");
     }
 
     public int draw(int level) {
         background(255);
+        player.draw();
         timePassed = (millis() - time) / 1000;
 
-        textSize(32);
+        textSize(128);
+        textAlign(CENTER, CENTER);
+        fill(0);
         if (letters.size() > 0) {
-            text(letters.get(0), width / 2, height / 2);
+            text(letters.get(0), (width/2), height / 2);
         } else {
 
             return level + 1;
