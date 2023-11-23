@@ -40,63 +40,65 @@ class Minigame2 {
         int x = xIni;
         int y = yIni;
         noStroke();
-        for (int i=0; i<8; i++){
-            for (int j=0; j<9; j++){
-                if ( (i==0 && j>6)|| ( i == 1 && j >6) || (i == 2 && j >7) || (i==3 && j>7)) {
-                    fill(255);
-                } else if ((i==0 && (j<7)) || i==7 || j==0 || (i==1 && j==3) || (i==1 && (j==3 || j==4)) || ((i == 1 || i == 2) && (j==6 || j==7)) || (i==3 && j==1) || (i==5 && j ==2) || (i==3 && j==4) || (i == 4 && (j==4 || j==5)) || (j==7 && (i==3 || i==4)) || (j==8 && (i>=4))) {
-                    fill(#D1345B);
-                } else {
-                    if (setUp) {
-                        if( (i == 5 && (j == 4 || j == 5 || j == 7)) || (i==4 && j==1) || (i==3 && j==6) || (i==2 && (j==3 || j==4)) || (i==1 && (j==1 || j==2 || j==5))) {
-                            ArrayList<String> up = walls.get("up");
-                            if (up == null) {
-                                up = new ArrayList<String>();
-                            }
-                            up.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
-                            walls.put("up",up);
-                        }
-                        if ((i==6) || (i==4 && j==2) || (i==3 && j==5) || (i==2 && (j==1 || j==4))) {
-                            ArrayList<String> down = walls.get("down");
-                            if (down == null) {
-                                down = new ArrayList<String>();
-                            }
-                            down.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
-                            walls.put("down",down);
-                        }
-                        if ((j==1 && i!=3) || (j==2 && i==3) || (j==3 && i==5) || (j==5 && (i==3 || i==1)) || (j==6 && i==4) ) {
-                            ArrayList<String> left = walls.get("left");
-                            if (left == null) {
-                                left = new ArrayList<String>();
-                            }
-                            left.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
-                            walls.put("left",left);
-                        }
-                        if ((j==1 && i==5) || (j==2 && i==1) || (j==3 && (i==3 || i==4)) || (j==5 && (i==1 || i==2)) || (j==6 && (i==3 || i==4)) || (j==7 && (i==5 || i == 6))) {
-                            ArrayList<String> right = walls.get("right");
-                            if (right == null) {
-                                right = new ArrayList<String>();
-                            }
-                            right.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
-                            walls.put("right",right);
-                        }
-                        losas.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
-                    }
-                    if (losas.contains(str(x+(tamCell/2))+","+str(y+(tamCell/2)))) {
-                        fill(#C6D2F9);
+        if (lvl == 18) {
+            for (int i=0; i<8; i++){
+                for (int j=0; j<9; j++){
+                    if ( (i==0 && j>6)|| ( i == 1 && j >6) || (i == 2 && j >7) || (i==3 && j>7)) {
+                        fill(255);
+                    } else if ((i==0 && (j<7)) || i==7 || j==0 || (i==1 && j==3) || (i==1 && (j==3 || j==4)) || ((i == 1 || i == 2) && (j==6 || j==7)) || (i==3 && j==1) || (i==5 && j ==2) || (i==3 && j==4) || (i == 4 && (j==4 || j==5)) || (j==7 && (i==3 || i==4)) || (j==8 && (i>=4))) {
+                        fill(#D1345B);
                     } else {
-                        fill(#444D6D);
+                        if (setUp) {
+                            if( (i == 5 && (j == 4 || j == 5 || j == 7)) || (i==4 && j==1) || (i==3 && j==6) || (i==2 && (j==3 || j==4)) || (i==1 && (j==1 || j==2 || j==5))) {
+                                ArrayList<String> up = walls.get("up");
+                                if (up == null) {
+                                    up = new ArrayList<String>();
+                                }
+                                up.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
+                                walls.put("up",up);
+                            }
+                            if ((i==6) || (i==4 && j==2) || (i==3 && j==5) || (i==2 && (j==1 || j==4))) {
+                                ArrayList<String> down = walls.get("down");
+                                if (down == null) {
+                                    down = new ArrayList<String>();
+                                }
+                                down.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
+                                walls.put("down",down);
+                            }
+                            if ((j==1 && i!=3) || (j==2 && i==3) || (j==3 && i==5) || (j==5 && (i==3 || i==1)) || (j==6 && i==4) ) {
+                                ArrayList<String> left = walls.get("left");
+                                if (left == null) {
+                                    left = new ArrayList<String>();
+                                }
+                                left.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
+                                walls.put("left",left);
+                            }
+                            if ((j==1 && i==5) || (j==2 && i==1) || (j==3 && (i==3 || i==4)) || (j==5 && (i==1 || i==2)) || (j==6 && (i==3 || i==4)) || (j==7 && (i==5 || i == 6))) {
+                                ArrayList<String> right = walls.get("right");
+                                if (right == null) {
+                                    right = new ArrayList<String>();
+                                }
+                                right.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
+                                walls.put("right",right);
+                            }
+                            losas.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
+                        }
+                        if (losas.contains(str(x+(tamCell/2))+","+str(y+(tamCell/2)))) {
+                            fill(#C6D2F9);
+                        } else {
+                            fill(#444D6D);
+                        }
                     }
+                    rect(x,y,tamCell,tamCell);
+                    x += tamCell;
                 }
-                rect(x,y,tamCell,tamCell);
-                x += tamCell;
+                x = xIni;
+                y += tamCell;
             }
-            x = xIni;
-            y += tamCell;
-        }
 
-        if (setUp) {
-            setUp = false;
+            if (setUp) {
+                setUp = false;
+            }
         }
     }
 
@@ -114,7 +116,7 @@ class Minigame2 {
         if (losas.size() == 0) {
             completed = true;
             calculetePoints();
-            screen += 1;
+            screen = 7;
         }
 
         return screen;
