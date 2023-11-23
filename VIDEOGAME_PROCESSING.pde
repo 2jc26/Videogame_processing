@@ -132,7 +132,7 @@ void draw() {
                 screen = st.draw(screen,24);
                 break;
             case 18:
-                screen = minigame2.draw(screen);
+                screen = minigame2.draw(2);
                 if (screen != 18) {
                     minigame2.calculetePoints();
                     points = minigame2.getPoints();
