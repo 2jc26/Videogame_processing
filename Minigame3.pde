@@ -37,7 +37,8 @@ class Minigame3 {
         if (letters.size() > 0) {
             text(letters.get(0), width / 2, height / 2);
         } else {
-            return level++;
+
+            return level + 1;
         }
 
         if(keyPressed) {
