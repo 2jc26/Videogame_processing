@@ -64,7 +64,7 @@ class Minigame2 {
                             down.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
                             walls.put("down",down);
                         }
-                        if ((j==1 && i!=3) || (j==2 && i==3) || (j==3 && i==5) || (j==5 && i==3) || (j==6 && i==4)) {
+                        if ((j==1 && i!=3) || (j==2 && i==3) || (j==3 && i==5) || (j==5 && (i==3 || i==1)) || (j==6 && i==4) ) {
                             ArrayList<String> left = walls.get("left");
                             if (left == null) {
                                 left = new ArrayList<String>();
@@ -72,7 +72,7 @@ class Minigame2 {
                             left.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
                             walls.put("left",left);
                         }
-                        if ((j==1 && i==5) || (j==3 && (i==3 || i==4)) || (j==5 && (i==1 || i==2)) || (j==6 && (i==3 || i==4)) || (j==7 && (i==5 || i == 6))) {
+                        if ((j==1 && i==5) || (j==2 && i==1) || (j==3 && (i==3 || i==4)) || (j==5 && (i==1 || i==2)) || (j==6 && (i==3 || i==4)) || (j==7 && (i==5 || i == 6))) {
                             ArrayList<String> right = walls.get("right");
                             if (right == null) {
                                 right = new ArrayList<String>();
@@ -80,11 +80,15 @@ class Minigame2 {
                             right.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
                             walls.put("right",right);
                         }
+                        losas.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
                     }
-                    fill(#C6D2F9);
+                    if (losas.contains(str(x+(tamCell/2))+","+str(y+(tamCell/2)))) {
+                        fill(#C6D2F9);
+                    } else {
+                        fill(#444D6D);
+                    }
                 }
                 rect(x,y,tamCell,tamCell);
-                losas.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
                 x += tamCell;
             }
             x = xIni;
@@ -106,6 +110,12 @@ class Minigame2 {
         timePassed = (millis() - time)/1000;
 
         movement();
+
+        if (losas.size() == 0) {
+            completed = true;
+            calculetePoints();
+            screen += 1;
+        }
 
         return screen;
     }
@@ -138,7 +148,9 @@ class Minigame2 {
     private void movement() {
 
         String position = str(player.getX())+","+str(player.getY());
-
+        if (losas.contains(position)) {
+            losas.remove(position);
+        }
         if(keyPressed) {
             keyPressed();
         }
