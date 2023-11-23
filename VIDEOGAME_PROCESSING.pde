@@ -25,7 +25,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 0;
+int screen = 19;
 int points = 0;
 
 String[] story1 = new String[1];
@@ -148,6 +148,9 @@ void draw() {
                 break;
             case 19:
                 screen = minigame3.draw(screen);
+                if (screen != 19) {
+                    points += minigame3.getPoints();
+                }
                 break;
             case 20:
                 screen = dungeon.draw(screen);
