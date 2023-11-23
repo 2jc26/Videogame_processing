@@ -103,7 +103,7 @@ void draw() {
                 screen = dungeon.draw(screen);
                 break;
             case 7:
-                screen = minigame2.draw(screen);
+                screen = minigame2.draw(screen, 1);
                 if (screen != 7) {
                     minigame2.calculetePoints();
                     points = minigame2.getPoints();
@@ -125,7 +125,7 @@ void draw() {
                 screen = dungeon.draw(screen);
                 break;
             case 13:
-                screen = minigame2.draw(screen);
+                screen = minigame2.draw(screen, 2);
                 if (screen != 13) {
                     minigame2.calculetePoints();
                     points = minigame2.getPoints();

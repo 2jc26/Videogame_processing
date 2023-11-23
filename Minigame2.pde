@@ -159,7 +159,7 @@ class Minigame2 {
         }
     }
 
-    public int draw(int level) {
+    public int draw(int screen, int level) {
         background(255);
         paintWalls(level);
         player.draw();
@@ -173,7 +173,11 @@ class Minigame2 {
         if (losas.size() == 0) {
             completed = true;
             calculetePoints();
-            screen = 7;
+            if (screen == 7){
+                screen = 8;
+            } else if (screen == 13) {
+                screen = 14;
+            }
         }
 
         return screen;
