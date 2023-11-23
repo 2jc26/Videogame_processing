@@ -102,7 +102,7 @@ class Minigame2 {
         } else if (lvl == 2) {
             for (int i=0; i<11; i++){
                 for (int j=0; j<8; j++){
-                    if (i==0 || i==10 || j==0 || j ==7 || (i==1 && (j==3 || j==4)) || (i==3 && j==6) || (i==4 && (j==1 || j==4)) || (i==7 && (j==2 || j==5 || j==6)) || (i==9 && j==3)) {
+                    if (i==0 || i==10 || j==0 || j ==7 || (i==1 && (j==3 || j==4)) || (i==3 && j==6) || (i==4 && (j==1 || j==4)) || (i==6 && j==2) || (i==7 && (j==2 || j==5 || j==6)) || (i==9 && j==3)) {
                         fill(#526352);
                     } else {
                         if (setUp) {
@@ -114,7 +114,7 @@ class Minigame2 {
                                 up.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
                                 walls.put("up",up);
                             }
-                            if ((i==9) || (i==8 && j==3) || (i==6 && (j==2 || j==5 || j==6)) || (i==4 && (j==1 || j==4)) || (i==3 && j==6)) {
+                            if ((i==9) || (i==8 && j==3) || (i==6 && (j==2 || j==5 || j==6)) || (i==3 && (j==1 || j==4)) || (i==2 && j==6) || (i==5 && j==2)) {
                                 ArrayList<String> down = walls.get("down");
                                 if (down == null) {
                                     down = new ArrayList<String>();
@@ -122,7 +122,7 @@ class Minigame2 {
                                 down.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
                                 walls.put("down",down);
                             }
-                            if ((j==1 && i!=4) || (j==3 && i==7) || (j==4) ||(j==5 && (i==1 && i==4))) {
+                            if ((j==1 && i!=4) || (j==3 && (i==6 || i==7)) || (j==4 && i==9) ||(j==5 && (i==1 || i==4))) {
                                 ArrayList<String> left = walls.get("left");
                                 if (left == null) {
                                     left = new ArrayList<String>();
@@ -130,7 +130,7 @@ class Minigame2 {
                                 left.add(str(x+(tamCell/2))+","+str(y+(tamCell/2)));
                                 walls.put("left",left);
                             }
-                            if ((j==1 && i==5) || (j==2 && i==1) || (j==3 && (i==3 || i==4)) || (j==5 && (i==1 || i==2)) || (j==6 && (i==3 || i==4)) || (j==7 && (i==5 || i == 6))) {
+                            if ((j==1 && (i==6 || i==7)) || (j==2 && (i==1 || i==9)) || (j==3 && i==4) || (j==4 && i==7) || (j==5 && i==3) || (j==6)) {
                                 ArrayList<String> right = walls.get("right");
                                 if (right == null) {
                                     right = new ArrayList<String>();
