@@ -12,6 +12,7 @@ Menu menu;
 St st;
 Rewards rewards;
 Minigame2 minigame2;
+Minigame3 minigame3;
 
 
 color blueColor = #52a3cc;
@@ -23,7 +24,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 18;
+int screen = 0;
 
 String[] story1 = new String[1];
 String[] story2 = new String[1];
@@ -59,12 +60,13 @@ void setup() {
     nombre = "";
     registered = false;
     minigame2 = new Minigame2(emblem);
+    minigame3 = new Minigame3(emblem);
 }
 
 void draw() {
-    // if (menu.getState().equals("Principal"))
-    //     menu.draw();
-    // else {
+    if (menu.getState().equals("Principal"))
+        menu.draw();
+    else {
         switch (screen) {
             case 0:
                 if (registered) {
@@ -80,62 +82,80 @@ void draw() {
                     break;
                 }
             case 1:
-                screen = inicial.draw(screen);
+                screen = st.draw(screen,24);
                 break;
             case 2:
-                screen = combat1.draw(screen);
+                screen = dungeon.draw(screen);
                 break;
             case 3:
-                screen = rewards.draw(screen);
-                break;
-            case 4:
-                screen = dungeon.draw(screen);
-                break;
-            case 5:
-                screen = dungeon.draw(screen);
-                break;
-            case 6:
-                screen = rewards.draw(screen);
-                break;
-            case 7:
-                screen = st.draw(screen,24);
-                break;
-            case 8:
-                screen = dungeon.draw(screen);
-                break;
-            case 9:
                 screen = inicial.draw(screen);
                 break;
-            case 10:
+            case 4:
                 screen = combat1.draw(screen);
                 break;
-            case 11:
-                screen = dungeon.draw(screen);
-                break;
-            case 12:
+            case 5:
                 screen = rewards.draw(screen);
                 break;
-            case 13:
+            case 6:
                 screen = dungeon.draw(screen);
+                break;
+            case 7:
+                screen = minigame2.draw(screen,1);
+                break;
+            case 8:
+                screen = inicial.draw(screen);
+                break;
+            case 9:
+                screen = combat1.draw(screen);
+                break;
+            case 10:
+                screen = rewards.draw(screen);
+                break;
+            case 11:
+                screen = st.draw(screen,24);
+                break;
+            case 12:
+                screen = dungeon.draw(screen);
+                break;
+            case 13:
+                screen = minigame2.draw(screen,2);
                 break;
             case 14:
-                screen = st.draw(screen,24);
+                screen = inicial.draw(screen);
                 break;
             case 15:
-                screen = dungeon.draw(screen);
+                screen = combat1.draw(screen);
                 break;
             case 16:
-                screen = dungeon.draw(screen);
+                screen = rewards.draw(screen);
                 break;
             case 17:
-                screen = st.draw(screen,24);
+                screen = dungeon.draw(screen);
                 break;
             case 18:
-                screen = minigame2.draw(screen);
+                screen = st.draw(screen,24);
+                break;
+            case 19:
+                screen = minigame3.draw(screen);
+                break;
+            case 20:
+                screen = dungeon.draw(screen);
+                break;
+            case 21:
+                screen = dungeon.draw(screen);
+                break;
+            case 22:
+                screen = inicial.draw(screen);
+                break;
+            case 23:
+                screen = combat1.draw(screen);
+                break;
+            case 24:
+                screen = st.draw(screen);
                 break;
         }
 
-    // }
+    }
 }
 
 void keyPressed() {
