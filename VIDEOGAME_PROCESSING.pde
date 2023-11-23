@@ -12,6 +12,7 @@ Menu menu;
 St st;
 Rewards rewards;
 Minigame2 minigame2;
+Minigame2 minigame22;
 Minigame3 minigame3;
 Ranking ranking;
 
@@ -62,6 +63,7 @@ void setup() {
     nombre = "";
     registered = false;
     minigame2 = new Minigame2(emblem);
+    minigame22 = new Minigame2(emblem);
     minigame3 = new Minigame3(emblem);
     ranking = new Ranking();
 }
@@ -125,10 +127,10 @@ void draw() {
                 screen = dungeon.draw(screen);
                 break;
             case 13:
-                screen = minigame2.draw(screen, 2);
+                screen = minigame22.draw(screen, 2);
                 if (screen != 13) {
-                    minigame2.calculetePoints();
-                    points += minigame2.getPoints();
+                    minigame22.calculetePoints();
+                    points += minigame22.getPoints();
                 }
                 break;
             case 14:
