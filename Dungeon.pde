@@ -30,13 +30,12 @@ class Dungeon {
         this.hairColor = hairColor;
         this.skinColor = skinColor;
         dungeons.put(0, 1);
-        dungeons.put(4, 2);
-        dungeons.put(5, 3);
-        dungeons.put(8, 4);
-        dungeons.put(11, 5);
-        dungeons.put(13, 6);
-        dungeons.put(15, 7);
-        dungeons.put(16, 8);
+        dungeons.put(2, 2);
+        dungeons.put(6, 3);
+        dungeons.put(12, 4);
+        dungeons.put(17, 5);
+        dungeons.put(20, 6);
+        dungeons.put(21, 7);
     }
 
     public int draw (int level) {
@@ -200,29 +199,6 @@ class Dungeon {
                     }
                     break;
                 case 7:
-                    switch (side) {
-                        case 0: // top side
-                            doorX = random(width);
-                            doorY = 0;
-                        break;
-                        case 1: // right side
-                            doorX = width - squareSize;
-                            doorY = random(height);
-                        break;
-                        case 2: // bottom side
-                            doorX = random(width);
-                            doorY = height - squareSize;
-                        break;
-                        case 3: // left side
-                            doorX = 0;
-                            doorY = random(height);
-                        break;
-                        default:
-                            doorX = 0;
-                            doorY = 0;
-                    }
-                    break;
-                case 8:
                     switch (side) {
                         case 0: // top side
                             doorX = random(width);

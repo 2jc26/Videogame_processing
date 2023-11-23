@@ -13,6 +13,7 @@ St st;
 Rewards rewards;
 Minigame2 minigame2;
 Minigame3 minigame3;
+Ranking ranking;
 
 
 color blueColor = #52a3cc;
@@ -24,7 +25,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 0;
+int screen = 24;
 int points = 0;
 
 String[] story1 = new String[1];
@@ -52,7 +53,7 @@ void setup() {
     pej = new Fighter(500,500,1);
     mage = new Mage(100,100,0.5);
     emblem = new Emblem(480,700,0.5);
-    combat1 = new Combat1(emblem, 16, indexer, 2);
+    combat1 = new Combat1(emblem, 16, indexer, 4);
     dungeon = new Dungeon(pej, clothesColor, hairColor, skinColor);
     inicial = new Initial(pej, mage, emblem, clothesColor, hairColor, skinColor);
     menu = new Menu("Principal", cp5);
@@ -62,6 +63,7 @@ void setup() {
     registered = false;
     minigame2 = new Minigame2(emblem);
     minigame3 = new Minigame3(emblem);
+    ranking = new Ranking();
 }
 
 void draw() {
@@ -101,7 +103,7 @@ void draw() {
                 screen = dungeon.draw(screen);
                 break;
             case 7:
-                screen = minigame2.draw(screen,1);
+                screen = minigame2.draw(screen);
                 if (screen != 7) {
                     minigame2.calculetePoints();
                     points = minigame2.getPoints();
@@ -123,7 +125,7 @@ void draw() {
                 screen = dungeon.draw(screen);
                 break;
             case 13:
-                screen = minigame2.draw(screen,2);
+                screen = minigame2.draw(screen);
                 if (screen != 13) {
                     minigame2.calculetePoints();
                     points = minigame2.getPoints();
@@ -160,7 +162,10 @@ void draw() {
                 screen = combat1.draw(screen);
                 break;
             case 24:
-                screen = st.draw(screen);
+                screen = st.draw(screen,24);
+                break;
+            case 25:
+                ranking.drawScore(nombre, points);
                 break;
         }
 
@@ -168,16 +173,25 @@ void draw() {
 }
 
 void keyPressed() {
-    if (keyCode == ENTER) {
-        if (nombre.length() > 0) {
-            registered = true;
+    if (screen == 0) {
+        if (keyCode == ENTER) {
+            if (nombre.length() > 0) {
+                registered = true;
+            }
+        } else if (keyCode == BACKSPACE) {
+            if (nombre.length() > 0) {
+                nombre = nombre.substring(0, nombre.length()-1);
+            }
+        } else {
+            nombre += key;
         }
-    } else if (keyCode == BACKSPACE) {
-        if (nombre.length() > 0) {
-            nombre = nombre.substring(0, nombre.length()-1);
+    }
+    if (screen == 25) {
+        if (keyCode == ' ') {
+            screen = 0;
+            menu.setState("Principal");
+            menu.ranking();
         }
-    } else {
-        nombre += key;
     }
 }
 

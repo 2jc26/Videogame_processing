@@ -44,7 +44,7 @@ class Combat1 {
 
         if (this.nivel == 1) {
             configFire(availableWidth, separation, x, y, nivel, cantidad, indexer);
-        } else if (this.nivel == 2) {
+        } else if (this.nivel == 4 || this.nivel == 9 || this.nivel == 15 || this.nivel == 23) {
             configSpare(availableWidth, separation, x, y, nivel, 7, indexer);
         } else if (this.nivel == 3) {
             configFire(availableWidth, separation, x, y, nivel, cantidad, indexer);
@@ -81,6 +81,7 @@ class Combat1 {
     }
 
     public int draw(int level) {
+        this.nivel = level;
         if (cont == 1) {
             tiempoInicio = millis();
             cont -= 1;
@@ -91,7 +92,7 @@ class Combat1 {
             arena(limit);
             if (nivel == 1 || nivel == 3) {
                 fireBallsNivel();
-            } else if (nivel == 2 || nivel == 3) {
+            } else if (nivel == 4 || nivel == 3) {
                 spearsNivel();
             }
 
@@ -181,34 +182,7 @@ class Combat1 {
     private void spearsNivel() {
         for (int i = 0; i < spears.size(); i++) {
             spears.get(i).draw();
-            // TODO
-            // int sector = setSector(spears.get(i).getX(), spears.get(i).getY(), spears.get(i).getTamXMax(), spears.get(i).getTamYMax());
-            // ArrayList<Integer> listObjSec = mapTable.get(sector);
-            // if (listObjSec != null) {
-            //     if (listObjSec.contains(spears.get(i).getIndexValue())) {
-            //         listObjSec.remove(Integer.valueOf(spears.get(i).getIndexValue()));
-            //     }
-            // }
             spears.get(i).move(inicial,limit+inicial,inicial,limit+inicial);
-            // TODO
-            // sector = setSector(spears.get(i).getX(), spears.get(i).getY(), spears.get(i).getTamXMax(), spears.get(i).getTamYMax());
-            // listObjSec = mapTable.get(sector);
-            // if (listObjSec == null) {
-            //     listObjSec = new ArrayList<Integer>();
-            //     listObjSec.add(spears.get(i).getIndexValue());
-            //     mapTable.put(sector, listObjSec);
-            // } else {
-            //     if (!listObjSec.contains(spears.get(i).getIndexValue())) {
-                    // if (listObjSec.size() > 0) {
-                    //     for (int j = 0; j < listObjSec.size(); j++) {
-                    //         if (spears.get(i).collide(spears.get(listObjSec.get(j)).getX(), spears.get(listObjSec.get(j)).getY(), spears.get(listObjSec.get(j)).getTamXMax(), spears.get(listObjSec.get(j)).getTamYMax())) {
-                    //             spears.get(i).bounce();
-                    //         }
-                    //     }
-                    // }
-            //         listObjSec.add(spears.get(i).getIndexValue());
-            //     }
-            // }
             if (spears.get(i).colision(emblem.minX(), emblem.minY(), emblem.maxX(), emblem.maxY())) {
                 emblem.lostLife();
             }

@@ -16,7 +16,7 @@ class Ranking {
 
     }
 
-    String drawScore(String nombre, int puntaje) {
+    public void  drawScore(String nombre, int puntaje) {
         background(0);
         textSize(50);
         fill(#FAECB6);
@@ -24,7 +24,6 @@ class Ranking {
         if (save) {
             salvarTable(nombre, puntaje);
         }
-        return "Ranking";
     }
 
     String drawLeadboard() {
@@ -58,9 +57,25 @@ class Ranking {
         nuevaFila.setInt("Puntaje", puntaje);
         
         if (puntajes.getRowCount() > 6) {
-            puntajes.removeRow(0);
+            int indicePuntajeMasBajo = encontrarIndicePuntajeMasBajo();
+            puntajes.removeRow(indicePuntajeMasBajo);
         }
         saveTable(puntajes, "data/puntajes.csv");
     }
 
+    int encontrarIndicePuntajeMasBajo() {
+        int indicePuntajeMasBajo = -1;
+        int puntajeMasBajo = Integer.MAX_VALUE;
+
+        for (int i = 0; i < puntajes.getRowCount(); i++) {
+            int puntajeActual = puntajes.getInt(i, "Puntaje");
+            if (puntajeActual < puntajeMasBajo) {
+                println(puntajeMasBajo);
+                puntajeMasBajo = puntajeActual;
+                indicePuntajeMasBajo = i;
+            }
+        }
+
+     return indicePuntajeMasBajo;
+    }
 }
