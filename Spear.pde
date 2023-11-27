@@ -73,15 +73,10 @@ class Spear {
 
     void move(int inicialX, int limitX, int inicialY,int limitY) {
         x += directionX;
-        // y += directionY;
         if (x > 900 || x < 0) {
-            // directionX *= -1;
             x = inicialX;
             colisionB = false;
         }
-        // if (y > tamYMax || y < 0) {
-        //     directionY *= -1;
-        // }
     }
 
     boolean colision(int xObj, int yObj, float maxXobj, float maxYObj) {
