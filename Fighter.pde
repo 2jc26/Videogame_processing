@@ -13,6 +13,22 @@ class Fighter {
         
     }
 
+    public int minX() {
+        return this.x - int(4*7*tam);
+    }
+
+    public int minY() {
+        return this.y-int(13*4*tam);
+    }
+
+    public int maxX() {
+        return this.x + int(4*8*tam);
+    }
+
+    public int maxY() {
+        return this.y + int(4*7*tam);
+    }
+
     public int getX() {
         return x;
     }
@@ -37,6 +53,13 @@ class Fighter {
         this.tam = tam;
     }
 
+    public boolean colision(int xMin, int yMin, int xMax, int yMax) {
+        if (((xMin < maxX()) || ((xMax < maxX()))) && ((xMin) > int(minX()) || ((xMax) > int(minX()))) && (yMin < (maxY()) || (yMax < (maxY()))) && ((yMin) > minY() || ((yMax) > minY())) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     
     void idleRight() {
 
@@ -270,11 +293,3 @@ class Fighter {
     }
 
 }
-
-        // vertex(x+145*tam, y+150*tam);
-        // vertex(x+75*tam, y+150*tam);
-        // vertex(x+70*tam, y+145*tam);
-        // vertex(x+70*tam, y+70*tam);
-        // vertex(x+75*tam, y+65*tam);
-        // vertex(x+145*tam, y+65*tam);
-        // vertex(x+8*tam, y+130*tam);

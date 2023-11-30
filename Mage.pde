@@ -13,6 +13,22 @@ class Mage {
         
     }
 
+    public int minY() {
+        return y;
+    }
+
+    public int maxY() {
+        return y+int(42*4*tam);
+    }
+
+    public int minX() {
+        return x;
+    }
+
+    public int maxX() {
+        return x+int(33*4*tam);
+    }
+
     void idleFront() {
         // scale(-1, 1);
         noStroke();
