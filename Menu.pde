@@ -20,8 +20,10 @@ class Menu {
                     if (theEvent.getController().getName().equals("nuevoJuego")) {
                         nuevoJuego();
                     } else if (theEvent.getController().getName().equals("controls")) {
+                        setState("Controls");
                         controls();
                     } else if (theEvent.getController().getName().equals("ranking")) {
+                        setState("Ranking");
                         ranking();
                     } else if (theEvent.getController().getName().equals("salir")) {
                         salir();
@@ -31,7 +33,7 @@ class Menu {
                         cp5.getController("ranking").show();
                         cp5.getController("salir").show();
                         cp5.getController("back").hide();
-                        background(255);
+                        setState("Principal");
                     }
                 }
             }

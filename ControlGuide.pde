@@ -9,6 +9,7 @@ class ControlGuide {
     PImage ZKey;
     PImage XKey;
     PImage SPACEKey;
+    PImage Background;
 
     public ControlGuide() {
         WKey = loadImage("./images/W.png");
@@ -20,12 +21,12 @@ class ControlGuide {
         ZKey = loadImage("./images/Z.png");
         XKey = loadImage("./images/X.png");
         SPACEKey = loadImage("./images/SPACE.png");
+        Background = loadImage("./images/Background.png");
     }
 
 
     void draw() {
-        background(255);
-        // draw the control guide
+        image(Background, 0, 0);
         fill(0);
         image(WKey, 200, 100, 50, 50);
         image(AKey, 200, 200, 50, 50);
@@ -37,78 +38,6 @@ class ControlGuide {
         image(XKey, 600, 400, 50, 50);
         image(SPACEKey, 200, 500, 50, 50);
 
-    }
-
-    void drawKey(int x) {
-
-        if (x == 0) {
-            // draw the W key
-            beginShape();
-            rect(200, 200+x, 50, 4);
-            rect(200, 200+x, 4, 50);
-            rect(200, 250+x, 50, 4);
-            rect(250, 200+x, 4, 54);
-            rect(200, 254+x, 4, 4);
-            rect(204, 258+x, 4, 4);
-            rect(208, 262+x, 58, 4);
-            rect(258, 258+x, 4, 4);
-            rect(254, 254+x, 4, 4);
-            rect(262, 208+x, 4, 54);
-            rect(254, 200+x, 4, 4);
-            rect(258, 204+x, 4, 4);
-            endShape();
-        }
-        if (x == 100) {
-            // draw the A key
-            beginShape();
-            rect(200, 200+x, 50, 4);
-            rect(200, 200+x, 4, 50);
-            rect(200, 250+x, 50, 4);
-            rect(250, 200+x, 4, 54);
-            rect(200, 254+x, 4, 4);
-            rect(204, 258+x, 4, 4);
-            rect(208, 262+x, 58, 4);
-            rect(258, 258+x, 4, 4);
-            rect(254, 254+x, 4, 4);
-            rect(262, 208+x, 4, 54);
-            rect(254, 200+x, 4, 4);
-            rect(258, 204+x, 4, 4);
-            endShape();
-        }
-        if (x == 200) {
-            // draw the S key
-            beginShape();
-            rect(200, 200+x, 50, 4);
-            rect(200, 200+x, 4, 50);
-            rect(200, 250+x, 50, 4);
-            rect(250, 200+x, 4, 54);
-            rect(200, 254+x, 4, 4);
-            rect(204, 258+x, 4, 4);
-            rect(208, 262+x, 58, 4);
-            rect(258, 258+x, 4, 4);
-            rect(254, 254+x, 4, 4);
-            rect(262, 208+x, 4, 54);
-            rect(254, 200+x, 4, 4);
-            rect(258, 204+x, 4, 4);
-            endShape();
-        }
-        if (x == 300) {
-            // draw the D key
-            beginShape();
-            rect(200, 200+x, 50, 4);
-            rect(200, 200+x, 4, 50);
-            rect(200, 250+x, 50, 4);
-            rect(250, 200+x, 4, 54);
-            rect(200, 254+x, 4, 4);
-            rect(204, 258+x, 4, 4);
-            rect(208, 262+x, 58, 4);
-            rect(258, 258+x, 4, 4);
-            rect(254, 254+x, 4, 4);
-            rect(262, 208+x, 4, 54);
-            rect(254, 200+x, 4, 4);
-            rect(258, 204+x, 4, 4);
-            endShape();
-        }
     }
 
 }

@@ -16,6 +16,8 @@ Minigame2 minigame22;
 Minigame3 minigame3;
 Ranking ranking;
 
+PImage background;
+
 
 color blueColor = #52a3cc;
 color redColor = #8c0e54;
@@ -26,7 +28,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 3;
+int screen = 0;
 int points = 0;
 
 String[] story1 = new String[1];
@@ -42,7 +44,8 @@ boolean registered;
 
 void setup() {
     size(1000,900);
-    background(255);
+    background = loadImage("./images/Background.png");
+    image(background, 0, 0);
     story1 = loadStrings("./story/story1.txt");
     story2 = loadStrings("./story/story2.txt");
     story3 = loadStrings("./story/story3.txt");
@@ -69,8 +72,16 @@ void setup() {
 }
 
 void draw() {
-    if (menu.getState().equals("Principal"))
+    if (menu.getState().equals("Principal")) {
+        image(background, 0, 0);
         menu.draw();
+    }
+    if (menu.getState().equals("Controls")) {
+        menu.controls();
+    }
+    if (menu.getState().equals("Ranking")) {
+        menu.ranking();
+    }
     else {
         switch (screen) {
             case 0:
@@ -79,9 +90,9 @@ void draw() {
                     break;
                 }
                 else {
-                    background(255);
+                    image(background, 0, 0);
                     textSize(32);
-                    fill(0);
+                    fill(255);
                     text("Ingrese su nombre: ", 400, 400);
                     text(nombre, 400, 450);
                     break;
@@ -182,11 +193,9 @@ void keyPressed() {
             nombre += key;
         }
     }
-    if (screen == 25) {
+    if (screen == 23) {
         if (keyCode == ' ') {
-            screen = 0;
-            menu.setState("Principal");
-            menu.ranking();
+            menu.setState("Ranking");
         }
     }
 }

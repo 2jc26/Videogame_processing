@@ -2,11 +2,14 @@ class Ranking {
 
     Table puntajes;
 
+    PImage background;
+
     int numFilas;
 
     boolean save;
 
     public Ranking () {
+        background = loadImage("./images/Background.png");
         setUp();
     }
 
@@ -17,7 +20,7 @@ class Ranking {
     }
 
     public void  drawScore(String nombre, int puntaje) {
-        background(0);
+        image(background, 0, 0);
         textSize(50);
         fill(#FAECB6);
         text("Puntaje: " + puntaje, 250, 250);
@@ -27,7 +30,7 @@ class Ranking {
     }
 
     String drawLeadboard() {
-        background(0);
+        image(background, 0, 0);
 
         textSize(50);
         fill(#FAECB6);
