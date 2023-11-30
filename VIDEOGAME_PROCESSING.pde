@@ -1,4 +1,5 @@
 import controlP5.*;
+import processing.sound.*;
 
 ControlP5 cp5;
 Fighter pej;
@@ -15,6 +16,8 @@ Minigame2 minigame2;
 Minigame2 minigame22;
 Minigame3 minigame3;
 Ranking ranking;
+
+SoundFile ourSong;
 
 PImage background;
 
@@ -45,6 +48,8 @@ boolean registered;
 
 void setup() {
     size(1000,900);
+    ourSong = new SoundFile(this, "song.mp3");
+    ourSong.play();
     background = loadImage("./images/Background.png");
     image(background, 0, 0);
     story1 = loadStrings("./story/story1.txt");
@@ -75,12 +80,15 @@ void setup() {
 
 void draw() {
     if (menu.getState().equals("Principal")) {
+        image(background, 0, 0);
         menu.draw();
     }
     else if (menu.getState().equals("Controls")) {
+        image(background, 0, 0);
         menu.controls();
     }
     else if (menu.getState().equals("Ranking")) {
+        image(background, 0, 0);
         menu.ranking();
     }
     else {
