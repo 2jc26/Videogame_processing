@@ -69,13 +69,21 @@ class Minigame3 {
 
         if (timePassed > 20) {
             cont = 0;
-            points = 0;
+            points = -50;
             return level + 1;
         }
 
         if(keyPressed) {
             keyPressed();
         }
+
+        textSize(32);
+        textAlign(RIGHT, TOP);
+        fill(#FAECB6);
+        text("Points: " + points, width - 10, 10);
+        textAlign(LEFT, TOP);
+        fill(#FAECB6);
+        text("MINIGAME", 10, 10);
 
         return level;
     }
@@ -84,9 +92,6 @@ class Minigame3 {
         if (keyCodeToString(keyCode) == letters.get(0)) {
             points+=10;
             letters.remove(0);
-        } 
-        else {
-            points-=10;
         }
     }
 
