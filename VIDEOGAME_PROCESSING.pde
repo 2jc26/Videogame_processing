@@ -34,6 +34,7 @@ int points = 0;
 String[] story1 = new String[1];
 String[] story2 = new String[1];
 String[] story3 = new String[1];
+String[] story4 = new String[1];
 
 String[] recompensa1 = new String[1];
 String[] recompensa2 = new String[1];
@@ -49,6 +50,7 @@ void setup() {
     story1 = loadStrings("./story/story1.txt");
     story2 = loadStrings("./story/story2.txt");
     story3 = loadStrings("./story/story3.txt");
+    story4 = loadStrings("./story/story4.txt");
     recompensa1 = loadStrings("./rewards/reward1.txt");
     recompensa2 = loadStrings("./rewards/reward2.txt");
     recompensa3 = loadStrings("./rewards/reward3.txt");
@@ -61,7 +63,7 @@ void setup() {
     dungeon = new Dungeon(pej, clothesColor, hairColor, skinColor, emblem);
     inicial = new Initial(pej, mage, emblem, clothesColor, hairColor, skinColor);
     menu = new Menu("Principal", cp5);
-    st = new St(story1);
+    st = new St();
     rewards = new Rewards(recompensa1);
     nombre = "";
     registered = false;
@@ -98,7 +100,8 @@ void draw() {
                     break;
                 }
             case 1:
-                screen = st.draw(screen,24);
+                st.setText(story1);
+                screen = st.draw(screen,5);
                 break;
             case 2:
                 screen = dungeon.draw(screen, points);
@@ -132,7 +135,8 @@ void draw() {
                 screen = rewards.draw(screen);
                 break;
             case 11:
-                screen = st.draw(screen,24);
+                st.setText(story2);
+                screen = st.draw(screen,5);
                 break;
             case 12:
                 screen = dungeon.draw(screen, points);
@@ -157,7 +161,8 @@ void draw() {
                 screen = dungeon.draw(screen, points);
                 break;
             case 17:
-                screen = st.draw(screen,24);
+                st.setText(story3);
+                screen = st.draw(screen,5);
                 break;
             case 18:
                 screen = dungeon.draw(screen, points);
@@ -169,7 +174,8 @@ void draw() {
                 screen = combat1.draw(screen);
                 break;
             case 21:
-                screen = st.draw(screen,24);
+                st.setText(story4);
+                screen = st.draw(screen,5);
                 break;
             case 22:
                 ranking.drawScore(nombre, points);

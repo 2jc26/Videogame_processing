@@ -1,23 +1,28 @@
 class St {
 
-    String[] textos;
+    String[] textos = new String[1];
     int yPosition; // Posición vertical actual
     boolean isDrawn = false;
-
+    PImage img;
     boolean isClicked = false;
 
-    public St (String [] textos) {
-        this.textos = textos;   
+    public St () {
+        textos[0] = "Hola mundo!!!";
         yPosition = 100; // Inicializa la posición vertical
+    }
+
+    public void setText(String [] textos) {
+        img = loadImage("/images/Background.png");
+        this.textos = textos;
     }
 
     int draw(int p, int wordsPerLine) {
 
         if (!isDrawn) {
-            background(255);
+            image(img, 0, 0);
             isDrawn = true;
-            fill(0);
-            textSize(20);
+            fill(#FAECB6);
+            textSize(50);
             int wordCount = 0;
             String currentLine = "";
 
@@ -27,7 +32,7 @@ class St {
                     currentLine += word + " ";
                     wordCount++;
                     if (wordCount >= wordsPerLine) {
-                        text(currentLine, 100, yPosition);
+                        text(currentLine, 60, yPosition);
                         yPosition += textAscent() + textDescent(); // Aumenta la posición vertical
                         currentLine = "";
                         wordCount = 0;
@@ -40,8 +45,8 @@ class St {
                 yPosition += textAscent() + textDescent();
             }
 
-            textSize(20);
-            fill(0);
+            textSize(40);
+            fill(#FAECB6);
             text("Para continuar pulsa la tecla: \"Espacio\"", 350, 700);  
         }
 
