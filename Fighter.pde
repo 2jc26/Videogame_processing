@@ -3,7 +3,7 @@ class Fighter {
     private int x;
     private int y;
     private int tam;
-    private int speed = 10;
+    private int speed = 1;
 
 
     public Fighter (int posX, int posY, int tam) {

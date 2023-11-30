@@ -25,7 +25,7 @@ class Rewards {
         image(background,0,0);
         image(cofreCerrado, 400, 450, 200, 200);
         click(); 
-        textSize(50);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+        textSize(20);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
         fill(#FAECB6);
         text(textos[0], 100, 100);
 
@@ -44,7 +44,7 @@ class Rewards {
         if (mouseX > 400 && mouseX < 600 && mouseY > 450 && mouseY < 650) {
             image(cofreAbierto, 400, 450, 200, 200);
             textSize(20);
-            fill(0);
+            fill(#FAECB6);
             text("Para continuar pulsa la tecla: \"Espacio\"", 350, 700);            
         }
     }
