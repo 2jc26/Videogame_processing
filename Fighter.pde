@@ -303,4 +303,90 @@ class Fighter {
         endShape();
     }
 
+
+    public void move(int dirX, int dirY, int limitXMaX, int limitYMax, int limitXMin, int limitYMin) {
+        if (dirX > 0) {
+            if (this.x < limitXMaX) {
+                this.x += this.speed;
+            } else {
+                this.x = limitXMaX;
+            }
+        } else if (dirX < 0) {
+            if (this.x > limitXMin) {
+                this.x -= this.speed;
+            } else {
+                this.x = limitXMin;
+            }
+        }
+
+        if (dirY > 0) {
+            if (this.y < limitYMax) {
+                this.y += this.speed;
+            } else {
+                this.y = limitYMax;
+            }
+        } else if (dirY < 0) {
+            if (this.y > limitYMin) {
+                this.y -= this.speed;
+            } else {
+                this.y = limitYMin;
+            }
+        }
+    }
+
+    public void moveSpecial(int dirX, int dirY, int limitXMaX, int limitYMax, int limitXMin, int limitYMin) {
+
+        
+        if (this.y >= 490) {
+            limitXMin = 416;
+            limitXMaX = 674;
+            if ((this.x >= 416 && this.x <= 480) || (this.x>=611 && this.x <= 674)) {
+                limitYMin = 490;
+            }
+        }
+        if (this.y >= 550) {
+            limitXMin = 480;
+            limitXMaX = 611;
+            if ((this.x >= 480 || this.x <= 540) && (this.x >= 548 || this.x <= 611)) {
+                limitYMin = 550;
+            }
+        }
+        if (this.y >= 680) {
+            limitYMax = 680;
+            limitXMin = 540;
+            limitXMaX = 548;
+        }
+        if (this.x <= 480 || x >= 611) {
+            limitYMin = 300;
+        }
+
+        if (dirX > 0) {
+            if (this.x < limitXMaX) {
+                this.x += this.speed;
+            } else {
+                this.x = limitXMaX;
+            }
+        } else if (dirX < 0) {
+            if (this.x > limitXMin) {
+                this.x -= this.speed;
+            } else {
+                this.x = limitXMin;
+            }
+        }
+
+        if (dirY > 0) {
+            if (this.y < limitYMax) {
+                this.y += this.speed;
+            } else {
+                this.y = limitYMax;
+            }
+        } else if (dirY < 0) {
+            if (this.y > limitYMin) {
+                this.y -= this.speed;
+            } else {
+                this.y = limitYMin;
+            }
+        }
+    }
+
 }
