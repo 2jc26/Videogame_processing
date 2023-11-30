@@ -75,7 +75,6 @@ void setup() {
 
 void draw() {
     if (menu.getState().equals("Principal")) {
-        image(background, 0, 0);
         menu.draw();
     }
     else if (menu.getState().equals("Controls")) {

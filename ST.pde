@@ -47,7 +47,7 @@ class St {
 
             textSize(40);
             fill(#FAECB6);
-            text("Para continuar pulsa la tecla: \"Espacio\"", 350, 700);  
+            text("Para continuar pulsa la tecla: \"Espacio\"", 250, 700);  
         }
 
         if(keyPressed) {
