@@ -175,12 +175,11 @@ void draw() {
                 ranking.drawScore(nombre, points);
                 break;
         }
-
     }
 }
 
 void keyPressed() {
-    if (screen == 0) {
+    if (screen == 0 && !registered && !(menu.getState().equals("Principal")) && !(menu.getState().equals("Controls")) && !(menu.getState().equals("Ranking"))) {
         if (keyCode == ENTER) {
             if (nombre.length() > 0) {
                 registered = true;
@@ -191,11 +190,6 @@ void keyPressed() {
             }
         } else {
             nombre += key;
-        }
-    }
-    if (screen == 23) {
-        if (keyCode == ' ') {
-            menu.setState("Ranking");
         }
     }
 }
