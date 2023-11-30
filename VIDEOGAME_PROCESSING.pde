@@ -28,7 +28,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 14;
+int screen = 0;
 int points = 0;
 
 String[] story1 = new String[1];
@@ -175,12 +175,11 @@ void draw() {
                 ranking.drawScore(nombre, points);
                 break;
         }
-
     }
 }
 
 void keyPressed() {
-    if (screen == 0) {
+    if (screen == 0 && !registered && !(menu.getState().equals("Principal")) && !(menu.getState().equals("Controls")) && !(menu.getState().equals("Ranking"))) {
         if (keyCode == ENTER) {
             if (nombre.length() > 0) {
                 registered = true;
@@ -191,11 +190,6 @@ void keyPressed() {
             }
         } else {
             nombre += key;
-        }
-    }
-    if (screen == 23) {
-        if (keyCode == ' ') {
-            menu.setState("Ranking");
         }
     }
 }
