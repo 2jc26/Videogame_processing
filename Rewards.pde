@@ -6,27 +6,29 @@ class Rewards {
 
     PImage cofreAbierto;
 
+    PImage background;
+
     boolean isDrawn = false;
 
     boolean isClicked = false;
     
     public Rewards (String [] textos) {
-        this.textos = textos;   
-        cofreAbierto = loadImage("./images/cofre_abierto.jpg");
-        cofreCerrado = loadImage("./images/cofre_cerrado.jpg");
+        this.textos = textos;
+        background = loadImage("./images/Background.png");
+        cofreAbierto = loadImage("./images/cofre_abierto.png");
+        cofreCerrado = loadImage("./images/cofre_cerrado.png");
         
     }
 
 
     int draw(int p) {
-        background(255);
+        image(background,0,0);
         image(cofreCerrado, 400, 450, 200, 200);
         click(); 
         textSize(20);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
         fill(0);
         text(textos[0], 100, 100);
 
-        // TODO: change window
         if(keyPressed) {
             keyPressed();
         }

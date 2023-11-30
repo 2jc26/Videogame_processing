@@ -3,14 +3,22 @@ class Fighter {
     private int x;
     private int y;
     private int tam;
+    private int speed;
 
 
-    public Fighter
-    (int posX, int posY, int tam) {
+    public Fighter (int posX, int posY, int tam) {
         this.x = posX;
         this.y = posY;
         this.tam = tam;
         
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     public int minX() {

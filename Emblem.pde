@@ -6,7 +6,7 @@ class Emblem {
     private float tamXMax;
     private float tamYMax;
     private int vidaMax = 20;
-    private int vida = 19;
+    private int vida = 20;
 
     private int speed;
 
