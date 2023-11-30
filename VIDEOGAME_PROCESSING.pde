@@ -76,10 +76,10 @@ void draw() {
         image(background, 0, 0);
         menu.draw();
     }
-    if (menu.getState().equals("Controls")) {
+    else if (menu.getState().equals("Controls")) {
         menu.controls();
     }
-    if (menu.getState().equals("Ranking")) {
+    else if (menu.getState().equals("Ranking")) {
         menu.ranking();
     }
     else {
