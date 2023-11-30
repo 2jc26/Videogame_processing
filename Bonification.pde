@@ -2,6 +2,7 @@ class Bonification {
 
     private int cantidad;
     private int tipo; //1 +vida, 2 +velocidad, 3 +vidaMax, 4 -vida, 5 -velocidad
+    private String boni="";
     private boolean reward = false;
     private int logo = int(random(1, 5));
     private int x;
@@ -22,22 +23,27 @@ class Bonification {
         tipo = int(random(1, 6));
         switch (tipo) {
         case 1:
+            boni = "vida";
             limiteInf = 1;
             limiteSup = 11;
             break;
         case 2:
+            boni = "velocidad";
             limiteInf = 1;
             limiteSup = 6;
             break;
         case 3:
+            boni = "vidaMax";
             limiteInf = 5;
             limiteSup = 21;
             break;
         case 4:
+            boni = "vida";
             limiteInf = -5;
             limiteSup = 0;
             break;
         case 5:
+            boni = "velocidad";
             limiteInf = -5;
             limiteSup = 0;
             break;
@@ -57,12 +63,22 @@ class Bonification {
                 image(consumible4, x, y, ancho, alto);
             }
         }
+        if (estado && millis() - time < 5000) {
+            textSize(50);
+            if (tipo == 1 || tipo == 2 || tipo == 3) {
+                fill(#26853F);
+            } else {
+                fill(#852C26);
+            }
+            text(cantidad + " "+ boni, x, y-10);
+        }
     }
 
     public boolean colision(int xObj, int yObj, int maxXObj, int maxYObj) {
         if (!estado) {
             if ((xObj < (maxX())) && ((maxXObj) > int(x)) && (yObj < (maxY())) && ((maxYObj) > y)) {
                 estado = true;
+                setTime();
                 return true;
             }
         }
