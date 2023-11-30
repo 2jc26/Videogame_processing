@@ -26,7 +26,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 0;
+int screen = 15;
 int points = 0;
 
 String[] story1 = new String[1];
@@ -134,42 +134,33 @@ void draw() {
                 }
                 break;
             case 14:
-                screen = inicial.draw(screen);
-                break;
-            case 15:
-                screen = combat1.draw(screen);
-                break;
-            case 16:
-                screen = rewards.draw(screen);
-                break;
-            case 17:
                 screen = dungeon.draw(screen);
                 break;
-            case 18:
-                screen = st.draw(screen,24);
-                break;
-            case 19:
+            case 15:
                 screen = minigame3.draw(screen);
-                if (screen != 19) {
+                if (screen != 15) {
                     points += minigame3.getPoints();
                 }
                 break;
-            case 20:
+            case 16:
                 screen = dungeon.draw(screen);
                 break;
-            case 21:
-                screen = dungeon.draw(screen);
-                break;
-            case 22:
-                screen = inicial.draw(screen);
-                break;
-            case 23:
-                screen = combat1.draw(screen);
-                break;
-            case 24:
+            case 17:
                 screen = st.draw(screen,24);
                 break;
-            case 25:
+            case 18:
+                screen = dungeon.draw(screen);
+                break;
+            case 19:
+                screen = inicial.draw(screen);
+                break;
+            case 20:
+                screen = combat1.draw(screen);
+                break;
+            case 21:
+                screen = st.draw(screen,24);
+                break;
+            case 22:
                 ranking.drawScore(nombre, points);
                 break;
         }
