@@ -27,7 +27,6 @@ class ControlGuide {
 
     void draw() {
         image(Background, 0, 0);
-        fill(0);
         image(WKey, 200, 100, 50, 50);
         image(AKey, 200, 200, 50, 50);
         image(SKey, 200, 300, 50, 50);

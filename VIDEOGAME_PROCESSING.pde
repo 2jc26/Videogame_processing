@@ -67,7 +67,7 @@ void setup() {
     registered = false;
     minigame2 = new Minigame2(emblem);
     minigame22 = new Minigame2(emblem);
-    minigame3 = new Minigame3(emblem);
+    minigame3 = new Minigame3();
     ranking = new Ranking();
 }
 
