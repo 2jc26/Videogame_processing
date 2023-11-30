@@ -5,8 +5,6 @@ class Combat1 {
     
     Emblem emblem;
 
-    Indexer indexer;
-
     boolean lost = false;
 
     private boolean moveUp = false;
@@ -17,6 +15,8 @@ class Combat1 {
     private boolean moveUpRight = false;
     private boolean moveDownLeft = false;
     private boolean moveDownRight = false;
+
+    PImage Fondo;
 
     ArrayList<Fireball> fireballs = new ArrayList<Fireball>();
 
@@ -30,26 +30,23 @@ class Combat1 {
     private int nivel;
     private int tiempoInicio;
     private int cont = 1;
+    private int availableWidth = 500;
+    private int separation = 65;
+    private int cantidad;
+    private Indexer indexer;
 
     int limit = 560;
     int inicial = 190;
+    private int tiempoEspera;
 
-    public Combat1(Emblem emblem, int cantidad, Indexer indexer, int nivel) {
+    public Combat1(Emblem emblem, int cantidad, Indexer indexer) {
         this.emblem = emblem;
-
-        int availableWidth = 500;
-        int separation = 65;
+        this.cantidad = cantidad;
+        Fondo = loadImage("./images/combat.png");
         int x = 200;
         int y = 250;
-        this.nivel = nivel;
-
-        if (this.nivel == 4 || this.nivel == 20) {
-            configFire(availableWidth, separation, x, y, nivel, cantidad, indexer);
-        }
-        if (this.nivel == 9 || this.nivel == 20) {
-            configSpare(availableWidth, separation, x, y, nivel, 7, indexer);
-        }
-
+        configFire(availableWidth, separation, x, y, nivel, cantidad, indexer);
+        configSpare(availableWidth, separation, x, y, nivel, 7, indexer);
     }
 
     public void configFire(int availableWidth, int separation, int x, int y, int nivel, int cantidad, Indexer indexer) {
@@ -80,15 +77,20 @@ class Combat1 {
     }
 
     public int draw(int level) {
+        background(255);
+        image(Fondo, 0, 0);
         this.nivel = level;
         if (cont == 1) {
             tiempoInicio = millis();
             cont -= 1;
         }
+        if (this.nivel == 4 || this.nivel == 20) {
+            tiempoEspera = 30000; // 30000 milisegundos son 30 segundos
+        }else if (this.nivel == 9) {
+            tiempoEspera = 7000; // 7000 milisegundos son 7 segundos
+        }
         movement();
         if (emblem.getVida() > 0) {
-            background(255);
-            arena(limit);
             if (nivel == 4 || nivel == 20) {
                 fireBallsNivel();
             }
@@ -106,18 +108,17 @@ class Combat1 {
             fill(0, 255, 0);
             rect(inicial-15, inicial+limit+40, healtBarWidth, 20);
 
-            // // Cálculo del tiempo transcurrido
-            // int tiempoActual = millis();
-            // int tiempoTranscurrido = tiempoActual - tiempoInicio;
-            // int tiempoEspera = 7000; // 7000 milisegundos son 5 segundos
+            // Cálculo del tiempo transcurrido
+            int tiempoActual = millis();
+            int tiempoTranscurrido = tiempoActual - tiempoInicio;
 
-            // if (tiempoTranscurrido >= tiempoEspera) {
-            //     cont += 1;
-            //     return level + 1; // Aumentar el nivel en 1
-            // } 
-            // else {
-            //     return level; // Retornar el nivel sin cambios
-            // }
+            if (tiempoTranscurrido >= tiempoEspera) {
+                cont += 1;
+                return level + 1; // Aumentar el nivel en 1
+            } 
+            else {
+                return level; // Retornar el nivel sin cambios
+            }
 
         }
 
@@ -131,9 +132,7 @@ class Combat1 {
             fireballs.get(i).draw();
             fireballs.get(i).move(inicial,limit+inicial,inicial,limit+inicial);
             if (fireballs.get(i).collide(emblem.minX(), emblem.minY(), emblem.maxX(), emblem.maxY())) {
-                
-                println("Colisionó");
-            //     emblem.lostLife();
+                emblem.lostLife();
             }
         }
     }
@@ -175,14 +174,6 @@ class Combat1 {
         return sect;
     
     }
-
-    public void arena(int tam) {
-        stroke(0);
-        strokeWeight(5);
-        noFill();
-        rect (inicial, inicial, tam, tam);
-    }
-
 
     private void movement() {
 

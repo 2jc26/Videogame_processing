@@ -57,7 +57,7 @@ void setup() {
     pej = new Fighter(500,500,1);
     mage = new Mage(512,200,0.5);
     emblem = new Emblem(480,700,0.5);
-    combat1 = new Combat1(emblem, 16, indexer, 4);
+    combat1 = new Combat1(emblem, 16, indexer);
     dungeon = new Dungeon(pej, clothesColor, hairColor, skinColor);
     inicial = new Initial(pej, mage, emblem, clothesColor, hairColor, skinColor);
     menu = new Menu("Principal", cp5);
