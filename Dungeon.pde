@@ -16,7 +16,10 @@ class Dungeon {
     private HashMap<Integer, Integer> dungeons = new HashMap<Integer, Integer>();
     private int squareSize = 70;
     private int cont = 1;
+    private int actual = -5;
     private int side;
+    private int cantidadConsumibles = 7;
+    private Bonification[] bonifications = new Bonification[cantidadConsumibles];
     private float doorX;
     private float doorY;
     private boolean moveUp = false;
@@ -145,6 +148,28 @@ class Dungeon {
                 background(255);
                 break;
         }
+        dibujoConsumibles(level);
+    }
+
+    private void dibujoConsumibles(int level) {
+        if (actual != 7) {
+            int x = int(random(0, width-80));
+            int y = int(random(0, height-80));
+            for (int i = 0; i < cantidadConsumibles; i++) {
+                Bonification bonification;
+                if (actual != level) {
+                    bonification = new Bonification();
+                    bonification.setPos(x,y);
+                    bonifications[i] = bonification;
+                    x = int(random(0, width-80));
+                    y = int(random(0, height-80));
+                }
+                bonification = bonifications[i];
+                bonification.draw();
+                bonification.colision(pej.minX(), pej.minY(), pej.maxX(), pej.maxY());
+            }
+            actual = level;
+        }
     }
 
     private void movement() {
@@ -166,39 +191,39 @@ class Dungeon {
         } else {
             if (moveUpLeft) {
                 if (isValidMove(pej.getX() - 1, pej.getY() - 1)) {
-                    pej.setX(pej.getX() - 1);
-                    pej.setY(pej.getY() - 1);
+                    pej.setX(pej.getX() - (1*pej.getSpeed()));
+                    pej.setY(pej.getY() - (1*pej.getSpeed()));
                 }
             } else if (moveUpRight) {
                 if (isValidMove(pej.getX() + 1, pej.getY() - 1)) {
-                    pej.setX(pej.getX() + 1);
-                    pej.setY(pej.getY() - 1);
+                    pej.setX(pej.getX() + (1*pej.getSpeed()));
+                    pej.setY(pej.getY() - (1*pej.getSpeed()));
                 }
             } else if (moveDownLeft) {
                 if (isValidMove(pej.getX() - 1, pej.getY() + 1)) {
-                    pej.setX(pej.getX() - 1);
-                    pej.setY(pej.getY() + 1);
+                    pej.setX(pej.getX() - (1*pej.getSpeed()));
+                    pej.setY(pej.getY() + (1*pej.getSpeed()));
                 }
             } else if (moveDownRight) {
                 if (isValidMove(pej.getX() + 1, pej.getY() + 1)) {
-                    pej.setX(pej.getX() + 1);
-                    pej.setY(pej.getY() + 1);
+                    pej.setX(pej.getX() + (1*pej.getSpeed()));
+                    pej.setY(pej.getY() + (1*pej.getSpeed()));
                 }
             } else if (moveUp) {
                 if (isValidMove(pej.getX(), pej.getY() - 1)) {
-                    pej.setY(pej.getY() - 1);
+                    pej.setY(pej.getY() - (1*pej.getSpeed()));
                 }
             } else if (moveDown) {
                 if (isValidMove(pej.getX(), pej.getY() + 1)) {
-                    pej.setY(pej.getY() + 1);
+                    pej.setY(pej.getY() + (1*pej.getSpeed()));
                 }
             } else if (moveLeft) {
                 if (isValidMove(pej.getX() - 1, pej.getY())) {
-                    pej.setX(pej.getX() - 1);
+                    pej.setX(pej.getX() - (1*pej.getSpeed()));
                 }
             } else if (moveRight) {
                 if (isValidMove(pej.getX() + 1, pej.getY())) {
-                    pej.setX(pej.getX() + 1);
+                    pej.setX(pej.getX() + (1*pej.getSpeed()));
                 }
             }
         }
@@ -233,39 +258,39 @@ class Dungeon {
         } else {
             if (moveUpLeft) {
                 if (isValidMoveFinal(pej.getX() - 1, pej.getY() - 1)) {
-                    pej.setX(pej.getX() - 1);
-                    pej.setY(pej.getY() - 1);
+                    pej.setX(pej.getX() - (1*pej.getSpeed()));
+                    pej.setY(pej.getY() - (1*pej.getSpeed()));
                 }
             } else if (moveUpRight) {
                 if (isValidMoveFinal(pej.getX() + 1, pej.getY() - 1)) {
-                    pej.setX(pej.getX() + 1);
-                    pej.setY(pej.getY() - 1);
+                    pej.setX(pej.getX() + (1*pej.getSpeed()));
+                    pej.setY(pej.getY() - (1*pej.getSpeed()));
                 }
             } else if (moveDownLeft) {
                 if (isValidMoveFinal(pej.getX() - 1, pej.getY() + 1)) {
-                    pej.setX(pej.getX() - 1);
-                    pej.setY(pej.getY() + 1);
+                    pej.setX(pej.getX() - (1*pej.getSpeed()));
+                    pej.setY(pej.getY() + (1*pej.getSpeed()));
                 }
             } else if (moveDownRight) {
                 if (isValidMoveFinal(pej.getX() + 1, pej.getY() + 1)) {
-                    pej.setX(pej.getX() + 1);
-                    pej.setY(pej.getY() + 1);
+                    pej.setX(pej.getX() + (1*pej.getSpeed()));
+                    pej.setY(pej.getY() + (1*pej.getSpeed()));
                 }
             } else if (moveUp) {
                 if (isValidMoveFinal(pej.getX(), pej.getY() - 1)) {
-                    pej.setY(pej.getY() - 1);
+                    pej.setY(pej.getY() - (1*pej.getSpeed()));
                 }
             } else if (moveDown) {
                 if (isValidMoveFinal(pej.getX(), pej.getY() + 1)) {
-                    pej.setY(pej.getY() + 1);
+                    pej.setY(pej.getY() + (1*pej.getSpeed()));
                 }
             } else if (moveLeft) {
                 if (isValidMoveFinal(pej.getX() - 1, pej.getY())) {
-                    pej.setX(pej.getX() - 1);
+                    pej.setX(pej.getX() - (1*pej.getSpeed()));
                 }
             } else if (moveRight) {
                 if (isValidMoveFinal(pej.getX() + 1, pej.getY())) {
-                    pej.setX(pej.getX() + 1);
+                    pej.setX(pej.getX() + (1*pej.getSpeed()));
                 }
             }
         }

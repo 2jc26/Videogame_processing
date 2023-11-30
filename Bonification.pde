@@ -3,11 +3,12 @@ class Bonification {
     private int cantidad;
     private int tipo; //1 +vida, 2 +velocidad, 3 +vidaMax, 4 -vida, 5 -velocidad
     private boolean reward = false;
+    private int logo = int(random(1, 5));
     private int x;
     private int y;
     private int ancho = 70;
     private int alto = 70;
-    private boolean estado;
+    private boolean estado = false;
     private int time;
     private PImage consumible1, consumible2, consumible3, consumible4;
 
@@ -16,8 +17,8 @@ class Bonification {
         consumible2 = loadImage("/images/bonificacion2.png");
         consumible3 = loadImage("/images/bonificacion3.png");
         consumible4 = loadImage("/images/bonificacion4.png");
-        int limiteSup;
-        int limiteInf;
+        int limiteSup = 0;
+        int limiteInf = 0;
         tipo = int(random(1, 6));
         switch (tipo) {
         case 1:
@@ -45,7 +46,6 @@ class Bonification {
     }
 
     public void draw () {
-        int logo = int(random(1, 5));
         if (reward==false) {
             if (logo==1) {
                 image(consumible1, x, y, ancho, alto);
