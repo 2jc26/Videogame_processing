@@ -28,7 +28,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 0;
+int screen = 15;
 int points = 0;
 
 String[] story1 = new String[1];
@@ -67,7 +67,7 @@ void setup() {
     registered = false;
     minigame2 = new Minigame2(emblem);
     minigame22 = new Minigame2(emblem);
-    minigame3 = new Minigame3(emblem);
+    minigame3 = new Minigame3();
     ranking = new Ranking();
 }
 

@@ -1,12 +1,13 @@
 class Minigame3 {
 
-    Emblem player;
+    PImage background;
 
     boolean completed = false;
     boolean moving = false;
     boolean started = false;
 
-    int time = 0;
+    int cont = 0;
+    int time;
     int timePassed = 0;
     int points = 0;
 
@@ -14,10 +15,9 @@ class Minigame3 {
     ArrayList<String> userLetters = new ArrayList<String>();
     String userLettersString = "";
 
-    public Minigame3(Emblem player) {
-        this.player = player;
-        player.setX(325);
-        player.setY(575);
+    public Minigame3() {
+
+        background = loadImage("./images/Background.png");
         letters.add("UP");
         letters.add("DOWN");
         letters.add("UP");
@@ -28,20 +28,49 @@ class Minigame3 {
         letters.add("RIGHT");
         letters.add("CONTROL");
         letters.add("SHIFT");
+        letters.add("CONTROL");
+        letters.add("SHIFT");
+        letters.add("UP");
+        letters.add("SHIFT");
+        letters.add("DOWN");
+        letters.add("CONTROL");
+        letters.add("UP");
+        letters.add("CONTROL");
+        letters.add("DOWN");
+        letters.add("SHIFT");
+        letters.add("LEFT");
+        letters.add("SHIFT");
+        letters.add("RIGHT");
+        letters.add("CONTROL");
+        letters.add("LEFT");
+        letters.add("CONTROL");
+        letters.add("SHIFT");
+        letters.add("RIGHT");
+        letters.add("CONTROL");
+        letters.add("SHIFT");
     }
 
     public int draw(int level) {
-        background(255);
-        player.draw();
+        image(background, 0, 0);
+        if (cont == 0) {
+            time = millis();
+            cont++;
+        }
         timePassed = (millis() - time) / 1000;
-
         textSize(128);
         textAlign(CENTER, CENTER);
-        fill(0);
+        fill(#FAECB6);
         if (letters.size() > 0) {
             text(letters.get(0), (width/2), height / 2);
         } else {
+            cont = 0;
             return level + 1;
+        }
+
+        if (timePassed > 15) {
+            cont = 0;
+            points = 0;
+            return level - 1;
         }
 
         if(keyPressed) {
@@ -53,8 +82,11 @@ class Minigame3 {
 
     void keyPressed() {
         if (keyCodeToString(keyCode) == letters.get(0)) {
-            points++;
+            points+=10;
             letters.remove(0);
+        } 
+        else {
+            points-=10;
         }
     }
 
