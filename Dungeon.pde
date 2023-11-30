@@ -3,6 +3,7 @@ import java.util.HashMap;
 class Dungeon {
 
     Fighter pej;
+    Emblem emblem;
 
     color clothesColor;
     color hairColor;
@@ -14,6 +15,7 @@ class Dungeon {
     PImage Dungeon4;
 
     private HashMap<Integer, Integer> dungeons = new HashMap<Integer, Integer>();
+    private int puntaje;
     private int squareSize = 70;
     private int cont = 1;
     private int actual = -5;
@@ -32,7 +34,8 @@ class Dungeon {
     private boolean moveDownRight = false;
 
 
-    public Dungeon(Fighter pej, color clothesColor, color hairColor, color skinColor) {
+    public Dungeon(Fighter pej, color clothesColor, color hairColor, color skinColor, Emblem emblem) {
+        this.emblem = emblem;
         this.pej = pej;
         this.clothesColor = clothesColor;
         this.hairColor = hairColor;
@@ -51,7 +54,8 @@ class Dungeon {
         Dungeon4 = loadImage("./images/Dungeon4.png");
     }
 
-    public int draw (int level) {
+    public int draw (int level, int puntaje) {
+        this.puntaje = puntaje;
         drawLevel(dungeons.get(level));
         pej.idleFront(hairColor, clothesColor, skinColor);
 
@@ -166,7 +170,28 @@ class Dungeon {
                 }
                 bonification = bonifications[i];
                 bonification.draw();
-                bonification.colision(pej.minX(), pej.minY(), pej.maxX(), pej.maxY());
+                if (bonification.colision(pej.minX(), pej.minY(), pej.maxX(), pej.maxY())){
+                    switch (bonification.getTipo()) {
+                        case 1:
+                            emblem.setVida(emblem.getVida() + bonification.getCantidad());
+                            break;
+                        case 2:
+                            emblem.setSpeed(emblem.getSpeed() + bonification.getCantidad());
+                            pej.setSpeed(pej.getSpeed() + bonification.getCantidad());
+                            break;
+                        case 3:
+                            emblem.setVidaMax(emblem.getVidaMax() + bonification.getCantidad());
+                            emblem.setVida(emblem.getVida() + bonification.getCantidad());
+                            break;
+                        case 4:
+                            emblem.setVida(emblem.getVida() + bonification.getCantidad());
+                            break;
+                        case 5:
+                            emblem.setSpeed(emblem.getSpeed() + bonification.getCantidad());
+                            pej.setSpeed(pej.getSpeed() + bonification.getCantidad());
+                            break;
+                    }
+                }
             }
             actual = level;
         }

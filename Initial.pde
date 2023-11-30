@@ -66,39 +66,39 @@ class Initial {
         } else {
             if (moveUpLeft) {
                 if (isValidMove(pej.getX() - 1, pej.getY() - 1)) {
-                    pej.setX(pej.getX() - 1);
-                    pej.setY(pej.getY() - 1);
+                    pej.setX(pej.getX() - (1*pej.getSpeed()));
+                    pej.setY(pej.getY() - (1*pej.getSpeed()));
                 }
             } else if (moveUpRight) {
                 if (isValidMove(pej.getX() + 1, pej.getY() - 1)) {
-                    pej.setX(pej.getX() + 1);
-                    pej.setY(pej.getY() - 1);
+                    pej.setX(pej.getX() + (1*pej.getSpeed()));
+                    pej.setY(pej.getY() - (1*pej.getSpeed()));
                 }
             } else if (moveDownLeft) {
                 if (isValidMove(pej.getX() - 1, pej.getY() + 1)) {
-                    pej.setX(pej.getX() - 1);
-                    pej.setY(pej.getY() + 1);
+                    pej.setX(pej.getX() - (1*pej.getSpeed()));
+                    pej.setY(pej.getY() + (1*pej.getSpeed()));
                 }
             } else if (moveDownRight) {
                 if (isValidMove(pej.getX() + 1, pej.getY() + 1)) {
-                    pej.setX(pej.getX() + 1);
-                    pej.setY(pej.getY() + 1);
+                    pej.setX(pej.getX() + (1*pej.getSpeed()));
+                    pej.setY(pej.getY() + (1*pej.getSpeed()));
                 }
             } else if (moveUp) {
                 if (isValidMove(pej.getX(), pej.getY() - 1)) {
-                    pej.setY(pej.getY() - 1);
+                    pej.setY(pej.getY() - (1*pej.getSpeed()));
                 }
             } else if (moveDown) {
                 if (isValidMove(pej.getX(), pej.getY() + 1)) {
-                    pej.setY(pej.getY() + 1);
+                    pej.setY(pej.getY() + (1*pej.getSpeed()));
                 }
             } else if (moveLeft) {
                 if (isValidMove(pej.getX() - 1, pej.getY())) {
-                    pej.setX(pej.getX() - 1);
+                    pej.setX(pej.getX() - (1*pej.getSpeed()));
                 }
             } else if (moveRight) {
                 if (isValidMove(pej.getX() + 1, pej.getY())) {
-                    pej.setX(pej.getX() + 1);
+                    pej.setX(pej.getX() + (1*pej.getSpeed()));
                 }
             }
         }

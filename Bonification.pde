@@ -9,7 +9,6 @@ class Bonification {
     private int ancho = 70;
     private int alto = 70;
     private boolean estado = false;
-    private int time;
     private PImage consumible1, consumible2, consumible3, consumible4;
 
     public Bonification () {
@@ -46,7 +45,7 @@ class Bonification {
     }
 
     public void draw () {
-        if (reward==false) {
+        if (reward==false && estado==false) {
             if (logo==1) {
                 image(consumible1, x, y, ancho, alto);
             } else if (logo==2) {
@@ -59,20 +58,18 @@ class Bonification {
         }
     }
 
-    public void colision(int xObj, int yObj, int maxXObj, int maxYObj) {
+    public boolean colision(int xObj, int yObj, int maxXObj, int maxYObj) {
         if (!estado) {
             if ((xObj < (maxX())) && ((maxXObj) > int(x)) && (yObj < (maxY())) && ((maxYObj) > y)) {
                 estado = true;
+                return true;
             }
         }
+        return false;
     }
 
     public boolean getEstado () {
         return estado;
-    }
-
-    public void setTime() {
-        time = millis();
     }
 
     public void setReward (boolean reward) {
@@ -94,10 +91,6 @@ class Bonification {
 
     public void setEstado (boolean estado) {
         this.estado=estado;
-    }
-
-    public void setTime (int time) {
-        this.time=time;
     }
 
     public int getTipo () {

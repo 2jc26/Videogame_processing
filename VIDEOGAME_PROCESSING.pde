@@ -58,7 +58,7 @@ void setup() {
     mage = new Mage(512,200,0.5);
     emblem = new Emblem(480,700,0.5);
     combat1 = new Combat1(emblem, 32, indexer);
-    dungeon = new Dungeon(pej, clothesColor, hairColor, skinColor);
+    dungeon = new Dungeon(pej, clothesColor, hairColor, skinColor, emblem);
     inicial = new Initial(pej, mage, emblem, clothesColor, hairColor, skinColor);
     menu = new Menu("Principal", cp5);
     st = new St(story1);
@@ -86,7 +86,7 @@ void draw() {
         switch (screen) {
             case 0:
                 if (registered) {
-                    screen = dungeon.draw(screen);
+                    screen = dungeon.draw(screen, points);
                     break;
                 }
                 else {
@@ -101,7 +101,7 @@ void draw() {
                 screen = st.draw(screen,24);
                 break;
             case 2:
-                screen = dungeon.draw(screen);
+                screen = dungeon.draw(screen, points);
                 break;
             case 3:
                 screen = inicial.draw(screen);
@@ -113,7 +113,7 @@ void draw() {
                 screen = rewards.draw(screen);
                 break;
             case 6:
-                screen = dungeon.draw(screen);
+                screen = dungeon.draw(screen, points);
                 break;
             case 7:
                 screen = minigame2.draw(screen, 1);
@@ -135,7 +135,7 @@ void draw() {
                 screen = st.draw(screen,24);
                 break;
             case 12:
-                screen = dungeon.draw(screen);
+                screen = dungeon.draw(screen, points);
                 break;
             case 13:
                 screen = minigame22.draw(screen, 2);
@@ -145,7 +145,7 @@ void draw() {
                 }
                 break;
             case 14:
-                screen = dungeon.draw(screen);
+                screen = dungeon.draw(screen, points);
                 break;
             case 15:
                 screen = minigame3.draw(screen);
@@ -154,13 +154,13 @@ void draw() {
                 }
                 break;
             case 16:
-                screen = dungeon.draw(screen);
+                screen = dungeon.draw(screen, points);
                 break;
             case 17:
                 screen = st.draw(screen,24);
                 break;
             case 18:
-                screen = dungeon.draw(screen);
+                screen = dungeon.draw(screen, points);
                 break;
             case 19:
                 screen = inicial.draw(screen);

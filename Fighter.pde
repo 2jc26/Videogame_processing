@@ -19,6 +19,9 @@ class Fighter {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+        if (this.speed < 1) {
+            this.speed = 1;
+        }
     }
 
     public int minX() {

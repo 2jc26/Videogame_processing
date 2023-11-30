@@ -8,7 +8,7 @@ class Emblem {
     private int vidaMax = 20;
     private int vida = 20;
 
-    private int speed;
+    private int speed = 1;
 
 
     public Emblem(int posX, int posY, float tam) {
@@ -121,6 +121,9 @@ class Emblem {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+        if (this.speed < 1) {
+            this.speed = 1;
+        }
     }
 
     public int getSpeed() {

@@ -196,54 +196,54 @@ class Combat1 {
         }
         else if (moveUpLeft) {
             if (emblem.minX() > inicial) {
-                emblem.setX(emblem.getX() - 1);
+                emblem.setX(emblem.getX() - (1*emblem.getSpeed()));
             }
             if (emblem.minY() > inicial) {
-                emblem.setY(emblem.getY() - 1);
+                emblem.setY(emblem.getY() - (1*emblem.getSpeed()));
             }
         }
         else if (moveUpRight) {
             if (emblem.maxX() < limit+inicial) {
-                emblem.setX(emblem.getX() + 1);
+                emblem.setX(emblem.getX() + (1*emblem.getSpeed()));
             }
             if (emblem.minY() > inicial) {
-                emblem.setY(emblem.getY() - 1);
+                emblem.setY(emblem.getY() - (1*emblem.getSpeed()));
             }
         }
         else if (moveDownLeft) {
             if (emblem.minX() > inicial) {
-                emblem.setX(emblem.getX() - 1);
+                emblem.setX(emblem.getX() - (1*emblem.getSpeed()));
             }
             if (emblem.maxY() < limit+inicial) {
-                emblem.setY(emblem.getY() + 1);
+                emblem.setY(emblem.getY() + (1*emblem.getSpeed()));
             }
         }
         else if (moveDownRight) {
             if (emblem.maxX() < limit+inicial) {
-                emblem.setX(emblem.getX() + 1);
+                emblem.setX(emblem.getX() + (1*emblem.getSpeed()));
             }
             if (emblem.maxY() < limit+inicial) {
-                emblem.setY(emblem.getY() + 1);
+                emblem.setY(emblem.getY() + (1*emblem.getSpeed()));
             }
         }
         else if (moveUp) {
             if (emblem.minY() > inicial) {
-                emblem.setY(emblem.getY() - 1);
+                emblem.setY(emblem.getY() - (1*emblem.getSpeed()));
             }
         }
         else if (moveDown) {
             if (emblem.maxY() < limit+inicial) {
-                emblem.setY(emblem.getY() + 1);
+                emblem.setY(emblem.getY() + (1*emblem.getSpeed()));
             }
         }
         else if (moveLeft) {
             if (emblem.minX() > inicial) {
-                emblem.setX(emblem.getX() - 1);
+                emblem.setX(emblem.getX() - (1*emblem.getSpeed()));
             }
         }
         else if (moveRight) {
             if (emblem.maxX() < limit+inicial) {
-                emblem.setX(emblem.getX() + 1);
+                emblem.setX(emblem.getX() + (1*emblem.getSpeed()));
             }
         }
     }
