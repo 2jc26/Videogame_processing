@@ -4,9 +4,13 @@ class Initial {
     Mage mage;
     Emblem emblem;
 
+    PImage background;
+
     color clothesColor;
     color hairColor;
     color skinColor;
+
+    private int cont = 1;
 
     private boolean moveUp = false;
     private boolean moveDown = false;
@@ -25,11 +29,18 @@ class Initial {
         this.clothesColor = clothesColor;
         this.hairColor = hairColor;
         this.skinColor = skinColor;
+
+        background = loadImage("images/Initial.png");
     }
 
     public int draw (int level) {
+        if (cont == 1) {
+            pej.setX(545);
+            pej.setY(height-35);
+            cont += 1;
+        }
 
-        background(255);
+        image(background, 0, 0);
         pej.idleFront(hairColor, clothesColor, skinColor);
         mage.idleFront();
         movement();
@@ -37,15 +48,13 @@ class Initial {
     }
 
     private void movement() {
-
-        if(keyPressed) {
+        if (keyPressed) {
             keyPressed();
-        }
-        else {
+        } else {
             keyReleased();
         }
 
-        if (!keyPressed)  {
+        if (!keyPressed) {
             moveUp = false;
             moveDown = false;
             moveLeft = false;
@@ -54,35 +63,71 @@ class Initial {
             moveUpRight = false;
             moveDownLeft = false;
             moveDownRight = false;
+        } else {
+            if (moveUpLeft) {
+                if (isValidMove(pej.getX() - 1, pej.getY() - 1)) {
+                    pej.setX(pej.getX() - 1);
+                    pej.setY(pej.getY() - 1);
+                }
+            } else if (moveUpRight) {
+                if (isValidMove(pej.getX() + 1, pej.getY() - 1)) {
+                    pej.setX(pej.getX() + 1);
+                    pej.setY(pej.getY() - 1);
+                }
+            } else if (moveDownLeft) {
+                if (isValidMove(pej.getX() - 1, pej.getY() + 1)) {
+                    pej.setX(pej.getX() - 1);
+                    pej.setY(pej.getY() + 1);
+                }
+            } else if (moveDownRight) {
+                if (isValidMove(pej.getX() + 1, pej.getY() + 1)) {
+                    pej.setX(pej.getX() + 1);
+                    pej.setY(pej.getY() + 1);
+                }
+            } else if (moveUp) {
+                if (isValidMove(pej.getX(), pej.getY() - 1)) {
+                    pej.setY(pej.getY() - 1);
+                }
+            } else if (moveDown) {
+                if (isValidMove(pej.getX(), pej.getY() + 1)) {
+                    pej.setY(pej.getY() + 1);
+                }
+            } else if (moveLeft) {
+                if (isValidMove(pej.getX() - 1, pej.getY())) {
+                    pej.setX(pej.getX() - 1);
+                }
+            } else if (moveRight) {
+                if (isValidMove(pej.getX() + 1, pej.getY())) {
+                    pej.setX(pej.getX() + 1);
+                }
+            }
         }
-        else if (moveUpLeft) {
-            pej.setX(pej.getX() - 1);
-            pej.setY(pej.getY() - 1);
+    }
+
+    private boolean isValidMove(int x, int y) {
+        // Adjust these values based on your screen dimensions
+        int minX = 347;
+        int minY = 50;
+        int maxX = 740;  
+        int maxY = height - 35;
+
+        if (y >= 490) {
+            minX = 416;
+            maxX = 674;
         }
-        else if (moveUpRight) {
-            pej.setX(pej.getX() + 1);
-            pej.setY(pej.getY() - 1);
+        if (y >= 550) {
+            minX = 480;
+            maxX = 611;
         }
-        else if (moveDownLeft) {
-            pej.setX(pej.getX() - 1);
-            pej.setY(pej.getY() + 1);
+        if (y >= 680) {
+            minX = 540;
+            maxX = 548;
         }
-        else if (moveDownRight) {
-            pej.setX(pej.getX() + 1);
-            pej.setY(pej.getY() + 1);
+        if (x <= 480 || x >= 611) {
+            minY = 300;
         }
-        else if (moveUp) {
-            pej.setY(pej.getY() - 1);
-        }
-        else if (moveDown) {
-            pej.setY(pej.getY() + 1);
-        }
-        else if (moveLeft) {
-            pej.setX(pej.getX() - 1);
-        }
-        else if (moveRight) {
-            pej.setX(pej.getX() + 1);
-        }
+
+        return (x >= minX && x <= maxX && y >= minY && y <= maxY);
     }
 
     void keyPressed() {
@@ -126,8 +171,10 @@ class Initial {
 
     private int fight(int level) {
 
-        if ((pej.getX() < 150) && (pej.getY() < 150))
+        if ((pej.getX() < 650) && ((pej.getX() > 450)) && (pej.getY() < 300)) {
+            cont = 1;
             return level+1;
+        }
         else
             return level;
     }

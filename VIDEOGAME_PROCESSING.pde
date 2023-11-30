@@ -26,7 +26,7 @@ color clothesColor = #3868ba;
 color hairColor = blueColor;
 color skinColor = #e5beac;
 
-int screen = 15;
+int screen = 3;
 int points = 0;
 
 String[] story1 = new String[1];
@@ -52,7 +52,7 @@ void setup() {
     cp5 = new ControlP5(this);
     indexer = new Indexer();
     pej = new Fighter(500,500,1);
-    mage = new Mage(100,100,0.5);
+    mage = new Mage(512,200,0.5);
     emblem = new Emblem(480,700,0.5);
     combat1 = new Combat1(emblem, 16, indexer, 4);
     dungeon = new Dungeon(pej, clothesColor, hairColor, skinColor);

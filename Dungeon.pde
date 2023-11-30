@@ -147,72 +147,72 @@ class Dungeon {
         }
     }
 
-private void movement() {
-    if (keyPressed) {
-        keyPressed();
-    } else {
-        keyReleased();
-    }
+    private void movement() {
+        if (keyPressed) {
+            keyPressed();
+        } else {
+            keyReleased();
+        }
 
-    if (!keyPressed) {
-        moveUp = false;
-        moveDown = false;
-        moveLeft = false;
-        moveRight = false;
-        moveUpLeft = false;
-        moveUpRight = false;
-        moveDownLeft = false;
-        moveDownRight = false;
-    } else {
-        if (moveUpLeft) {
-            if (isValidMove(pej.getX() - 1, pej.getY() - 1)) {
-                pej.setX(pej.getX() - 1);
-                pej.setY(pej.getY() - 1);
-            }
-        } else if (moveUpRight) {
-            if (isValidMove(pej.getX() + 1, pej.getY() - 1)) {
-                pej.setX(pej.getX() + 1);
-                pej.setY(pej.getY() - 1);
-            }
-        } else if (moveDownLeft) {
-            if (isValidMove(pej.getX() - 1, pej.getY() + 1)) {
-                pej.setX(pej.getX() - 1);
-                pej.setY(pej.getY() + 1);
-            }
-        } else if (moveDownRight) {
-            if (isValidMove(pej.getX() + 1, pej.getY() + 1)) {
-                pej.setX(pej.getX() + 1);
-                pej.setY(pej.getY() + 1);
-            }
-        } else if (moveUp) {
-            if (isValidMove(pej.getX(), pej.getY() - 1)) {
-                pej.setY(pej.getY() - 1);
-            }
-        } else if (moveDown) {
-            if (isValidMove(pej.getX(), pej.getY() + 1)) {
-                pej.setY(pej.getY() + 1);
-            }
-        } else if (moveLeft) {
-            if (isValidMove(pej.getX() - 1, pej.getY())) {
-                pej.setX(pej.getX() - 1);
-            }
-        } else if (moveRight) {
-            if (isValidMove(pej.getX() + 1, pej.getY())) {
-                pej.setX(pej.getX() + 1);
+        if (!keyPressed) {
+            moveUp = false;
+            moveDown = false;
+            moveLeft = false;
+            moveRight = false;
+            moveUpLeft = false;
+            moveUpRight = false;
+            moveDownLeft = false;
+            moveDownRight = false;
+        } else {
+            if (moveUpLeft) {
+                if (isValidMove(pej.getX() - 1, pej.getY() - 1)) {
+                    pej.setX(pej.getX() - 1);
+                    pej.setY(pej.getY() - 1);
+                }
+            } else if (moveUpRight) {
+                if (isValidMove(pej.getX() + 1, pej.getY() - 1)) {
+                    pej.setX(pej.getX() + 1);
+                    pej.setY(pej.getY() - 1);
+                }
+            } else if (moveDownLeft) {
+                if (isValidMove(pej.getX() - 1, pej.getY() + 1)) {
+                    pej.setX(pej.getX() - 1);
+                    pej.setY(pej.getY() + 1);
+                }
+            } else if (moveDownRight) {
+                if (isValidMove(pej.getX() + 1, pej.getY() + 1)) {
+                    pej.setX(pej.getX() + 1);
+                    pej.setY(pej.getY() + 1);
+                }
+            } else if (moveUp) {
+                if (isValidMove(pej.getX(), pej.getY() - 1)) {
+                    pej.setY(pej.getY() - 1);
+                }
+            } else if (moveDown) {
+                if (isValidMove(pej.getX(), pej.getY() + 1)) {
+                    pej.setY(pej.getY() + 1);
+                }
+            } else if (moveLeft) {
+                if (isValidMove(pej.getX() - 1, pej.getY())) {
+                    pej.setX(pej.getX() - 1);
+                }
+            } else if (moveRight) {
+                if (isValidMove(pej.getX() + 1, pej.getY())) {
+                    pej.setX(pej.getX() + 1);
+                }
             }
         }
     }
-}
 
-private boolean isValidMove(int x, int y) {
-    // Adjust these values based on your screen dimensions
-    int minX = 45;
-    int minY = 50;
-    int maxX = width - 42;  // Assuming pej has a method getWidth() to get its width
-    int maxY = height - 35;  // Assuming pej has a method getHeight() to get its height
+    private boolean isValidMove(int x, int y) {
+        // Adjust these values based on your screen dimensions
+        int minX = 45;
+        int minY = 50;
+        int maxX = width - 42;  // Assuming pej has a method getWidth() to get its width
+        int maxY = height - 35;  // Assuming pej has a method getHeight() to get its height
 
-    return x >= minX && x <= maxX && y >= minY && y <= maxY;
-}
+        return x >= minX && x <= maxX && y >= minY && y <= maxY;
+    }
 
 
     void keyPressed() {
