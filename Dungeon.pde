@@ -65,8 +65,8 @@ class Dungeon {
         switch (level) {
             case 1:
                 if (cont == 1) {
-                    pej.setX(width/2);
-                    pej.setY(height-40);
+                    pej.setX(545);
+                    pej.setY(height-35);
                     cont += 1;
                 }
                 movement();
@@ -76,8 +76,8 @@ class Dungeon {
                 break;
             case 2:
                 if (cont == 1) {
-                    pej.setX(width/2);
-                    pej.setY(height-40);
+                    pej.setX(545);
+                    pej.setY(height-35);
                     cont += 1;
                 }
                 movement();
@@ -87,8 +87,8 @@ class Dungeon {
                 break;
             case 3:
                 if (cont == 1) {
-                    pej.setX(width/2);
-                    pej.setY(height-40);
+                    pej.setX(545);
+                    pej.setY(height-35);
                     cont += 1;
                 }
                 movement();
@@ -98,8 +98,8 @@ class Dungeon {
                 break;
             case 4:
                 if (cont == 1) {
-                    pej.setX(width/2);
-                    pej.setY(height-40);
+                    pej.setX(545);
+                    pej.setY(height-35);
                     cont += 1;
                 }
                 movement();
@@ -109,8 +109,8 @@ class Dungeon {
                 break;
             case 5:
                 if (cont == 1) {
-                    pej.setX(width/2);
-                    pej.setY(height-40);
+                    pej.setX(545);
+                    pej.setY(height-35);
                     cont += 1;
                 }
                 movement();
@@ -120,8 +120,8 @@ class Dungeon {
                 break;
             case 6:
                 if (cont == 1) {
-                    pej.setX(width/2);
-                    pej.setY(height-40);
+                    pej.setX(545);
+                    pej.setY(height-35);
                     cont += 1;
                 }
                 movement();
@@ -131,11 +131,11 @@ class Dungeon {
                 break;
             case 7:
                 if (cont == 1) {
-                    pej.setX(width/2);
-                    pej.setY(height-40);
+                    pej.setX(545);
+                    pej.setY(height-35);
                     cont += 1;
                 }
-                movement();
+                movementFinal();
                 image(Dungeon4, 0, 0);
                 doorX = 491;
                 doorY = 0;
@@ -212,6 +212,89 @@ class Dungeon {
         int maxY = height - 35;  // Assuming pej has a method getHeight() to get its height
 
         return x >= minX && x <= maxX && y >= minY && y <= maxY;
+    }
+
+        private void movementFinal() {
+        if (keyPressed) {
+            keyPressed();
+        } else {
+            keyReleased();
+        }
+
+        if (!keyPressed) {
+            moveUp = false;
+            moveDown = false;
+            moveLeft = false;
+            moveRight = false;
+            moveUpLeft = false;
+            moveUpRight = false;
+            moveDownLeft = false;
+            moveDownRight = false;
+        } else {
+            if (moveUpLeft) {
+                if (isValidMoveFinal(pej.getX() - 1, pej.getY() - 1)) {
+                    pej.setX(pej.getX() - 1);
+                    pej.setY(pej.getY() - 1);
+                }
+            } else if (moveUpRight) {
+                if (isValidMoveFinal(pej.getX() + 1, pej.getY() - 1)) {
+                    pej.setX(pej.getX() + 1);
+                    pej.setY(pej.getY() - 1);
+                }
+            } else if (moveDownLeft) {
+                if (isValidMoveFinal(pej.getX() - 1, pej.getY() + 1)) {
+                    pej.setX(pej.getX() - 1);
+                    pej.setY(pej.getY() + 1);
+                }
+            } else if (moveDownRight) {
+                if (isValidMoveFinal(pej.getX() + 1, pej.getY() + 1)) {
+                    pej.setX(pej.getX() + 1);
+                    pej.setY(pej.getY() + 1);
+                }
+            } else if (moveUp) {
+                if (isValidMoveFinal(pej.getX(), pej.getY() - 1)) {
+                    pej.setY(pej.getY() - 1);
+                }
+            } else if (moveDown) {
+                if (isValidMoveFinal(pej.getX(), pej.getY() + 1)) {
+                    pej.setY(pej.getY() + 1);
+                }
+            } else if (moveLeft) {
+                if (isValidMoveFinal(pej.getX() - 1, pej.getY())) {
+                    pej.setX(pej.getX() - 1);
+                }
+            } else if (moveRight) {
+                if (isValidMoveFinal(pej.getX() + 1, pej.getY())) {
+                    pej.setX(pej.getX() + 1);
+                }
+            }
+        }
+    }
+
+    private boolean isValidMoveFinal(int x, int y) {
+        // Adjust these values based on your screen dimensions
+        int minX = 347;
+        int minY = 50;
+        int maxX = 740;  
+        int maxY = height - 35;
+
+        if (y >= 490) {
+            minX = 416;
+            maxX = 674;
+        }
+        if (y >= 550) {
+            minX = 480;
+            maxX = 611;
+        }
+        if (y >= 680) {
+            minX = 540;
+            maxX = 548;
+        }
+        if (x <= 480 || x >= 611) {
+            minY = 300;
+        }
+
+        return (x >= minX && x <= maxX && y >= minY && y <= maxY);
     }
 
 
