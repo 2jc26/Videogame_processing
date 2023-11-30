@@ -67,10 +67,10 @@ class Minigame3 {
             return level + 1;
         }
 
-        if (timePassed > 15) {
+        if (timePassed > 20) {
             cont = 0;
             points = 0;
-            return level - 1;
+            return level + 1;
         }
 
         if(keyPressed) {
