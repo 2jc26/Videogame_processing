@@ -9,7 +9,7 @@ class Ranking {
     boolean save;
 
     public Ranking () {
-        background = loadImage("./images/Background.png");
+        background = loadImage("Background.png");
         setUp();
     }
 

@@ -48,10 +48,10 @@ class Dungeon {
         dungeons.put(16, 6);
         dungeons.put(18, 7);
 
-        Dungeon1 = loadImage("./images/Dungeon1.png");
-        Dungeon2 = loadImage("./images/Dungeon2.png");
-        Dungeon3 = loadImage("./images/Dungeon3.png");
-        Dungeon4 = loadImage("./images/Dungeon4.png");
+        Dungeon1 = loadImage("Dungeon1.png");
+        Dungeon2 = loadImage("Dungeon2.png");
+        Dungeon3 = loadImage("Dungeon3.png");
+        Dungeon4 = loadImage("Dungeon4.png");
     }
 
     public int draw (int level, int puntaje) {

@@ -42,7 +42,7 @@ class Combat1 {
     public Combat1(Emblem emblem, int cantidad, Indexer indexer) {
         this.emblem = emblem;
         this.cantidad = cantidad;
-        Fondo = loadImage("./images/combat.png");
+        Fondo = loadImage("combat.png");
         int x = 200;
         int y = 250;
         configFire(availableWidth, separation, x, y, nivel, cantidad, indexer);

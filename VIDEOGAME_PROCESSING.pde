@@ -45,7 +45,7 @@ boolean registered;
 
 void setup() {
     size(1000,900);
-    background = loadImage("./images/Background.png");
+    background = loadImage("Background.png");
     image(background, 0, 0);
     story1 = loadStrings("./story/story1.txt");
     story2 = loadStrings("./story/story2.txt");

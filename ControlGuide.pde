@@ -12,16 +12,16 @@ class ControlGuide {
     PImage Background;
 
     public ControlGuide() {
-        WKey = loadImage("./images/W.png");
-        AKey = loadImage("./images/A.png");
-        SKey = loadImage("./images/S.png");
-        DKey = loadImage("./images/D.png");
-        QKey = loadImage("./images/Q.png");
-        EKey = loadImage("./images/E.png");
-        ZKey = loadImage("./images/Z.png");
-        XKey = loadImage("./images/X.png");
-        SPACEKey = loadImage("./images/SPACE.png");
-        Background = loadImage("./images/Background.png");
+        WKey = loadImage("W.png");
+        AKey = loadImage("A.png");
+        SKey = loadImage("S.png");
+        DKey = loadImage("D.png");
+        QKey = loadImage("Q.png");
+        EKey = loadImage("E.png");
+        ZKey = loadImage("Z.png");
+        XKey = loadImage("X.png");
+        SPACEKey = loadImage("SPACE.png");
+        Background = loadImage("Background.png");
     }
 
 

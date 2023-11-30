@@ -17,7 +17,7 @@ class Minigame3 {
 
     public Minigame3() {
 
-        background = loadImage("./images/Background.png");
+        background = loadImage("Background.png");
         letters.add("UP");
         letters.add("DOWN");
         letters.add("UP");

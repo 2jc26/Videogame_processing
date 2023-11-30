@@ -14,9 +14,9 @@ class Rewards {
     
     public Rewards (String [] textos) {
         this.textos = textos;
-        background = loadImage("./images/Background.png");
-        cofreAbierto = loadImage("./images/cofre_abierto.png");
-        cofreCerrado = loadImage("./images/cofre_cerrado.png");
+        background = loadImage("Background.png");
+        cofreAbierto = loadImage("cofre_abierto.png");
+        cofreCerrado = loadImage("cofre_cerrado.png");
         
     }
 
