@@ -43,12 +43,10 @@ class Combat1 {
         int y = 250;
         this.nivel = nivel;
 
-        if (this.nivel == 1) {
+        if (this.nivel == 4 || this.nivel == 20) {
             configFire(availableWidth, separation, x, y, nivel, cantidad, indexer);
-        } else if (this.nivel == 4 || this.nivel == 9 || this.nivel == 15 || this.nivel == 23) {
-            configSpare(availableWidth, separation, x, y, nivel, 7, indexer);
-        } else if (this.nivel == 3) {
-            configFire(availableWidth, separation, x, y, nivel, cantidad, indexer);
+        }
+        if (this.nivel == 9 || this.nivel == 20) {
             configSpare(availableWidth, separation, x, y, nivel, 7, indexer);
         }
 
@@ -91,9 +89,10 @@ class Combat1 {
         if (emblem.getVida() > 0) {
             background(255);
             arena(limit);
-            if (nivel == 1 || nivel == 3) {
+            if (nivel == 4 || nivel == 20) {
                 fireBallsNivel();
-            } else if (nivel == 4 || nivel == 3) {
+            }
+            if (nivel == 9 || nivel == 20) {
                 spearsNivel();
             }
 
@@ -107,18 +106,18 @@ class Combat1 {
             fill(0, 255, 0);
             rect(inicial-15, inicial+limit+40, healtBarWidth, 20);
 
-            // Cálculo del tiempo transcurrido
-            int tiempoActual = millis();
-            int tiempoTranscurrido = tiempoActual - tiempoInicio;
-            int tiempoEspera = 7000; // 7000 milisegundos son 5 segundos
+            // // Cálculo del tiempo transcurrido
+            // int tiempoActual = millis();
+            // int tiempoTranscurrido = tiempoActual - tiempoInicio;
+            // int tiempoEspera = 7000; // 7000 milisegundos son 5 segundos
 
-            if (tiempoTranscurrido >= tiempoEspera) {
-                cont += 1;
-                return level + 1; // Aumentar el nivel en 1
-            } 
-            else {
-                return level; // Retornar el nivel sin cambios
-            }
+            // if (tiempoTranscurrido >= tiempoEspera) {
+            //     cont += 1;
+            //     return level + 1; // Aumentar el nivel en 1
+            // } 
+            // else {
+            //     return level; // Retornar el nivel sin cambios
+            // }
 
         }
 
@@ -132,7 +131,9 @@ class Combat1 {
             fireballs.get(i).draw();
             fireballs.get(i).move(inicial,limit+inicial,inicial,limit+inicial);
             if (fireballs.get(i).collide(emblem.minX(), emblem.minY(), emblem.maxX(), emblem.maxY())) {
-                emblem.lostLife();
+                
+                println("Colisionó");
+            //     emblem.lostLife();
             }
         }
     }

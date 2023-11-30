@@ -8,6 +8,7 @@ class Fireball {
     private float tamXMax;
     private float tamYMax;
     private int index;
+    private boolean colisionB = false;
     
     
     public Fireball(int x, int y, int speed, float tam, int index) {
@@ -84,6 +85,7 @@ class Fireball {
         y +=directionY;
         
         if (x > limitX || x < inicialX) {
+            colisionB = false;
             directionX *= -1;
             int randomY = int(random(2));
             if (randomY == 0) {
@@ -93,6 +95,7 @@ class Fireball {
             }
         }
         if (y > limitY || y < inicialY) {
+            colisionB = false;
             directionY *= -1;
             int randomX = int(random(2));
             if (randomX == 0) {
@@ -103,10 +106,13 @@ class Fireball {
         }
     }
 
-    public boolean collide(int xObj, int yObj, float tamXObj, float tamYObj) {
-        if (this.x + tamXMax > x && this.x < xObj + tamXObj && this.y + tamYMax > y && this.y < yObj + tamYObj) {
+    public boolean collide(int xObj, int yObj, float maxXObj, float maxYObj) {
+        if (colisionB) return false;
+        colisionB = true;
+        if ((xObj < (maxX())) && ((maxXObj) > int(x)) && (yObj < (maxY())) && ((maxYObj) > y)) {
             return true;
         }
+        colisionB = false;
         return false;
     }
 

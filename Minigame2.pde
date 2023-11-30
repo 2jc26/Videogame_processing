@@ -245,21 +245,21 @@ class Minigame2 {
                 moving = true;
                 if (key == 'w') {
                     dirX = 0;
-                    dirY = -1;
+                    dirY = -10;
                     dir = "up";
                 }
                 if (key == 's'){
                     dirX = 0;
-                    dirY = 1;
+                    dirY = 10;
                     dir = "down";
                 }
                 if (key == 'a'){
-                    dirX = -1;
+                    dirX = -10;
                     dirY = 0;
                     dir = "left";
                 }
                 if (key == 'd'){
-                    dirX = 1;
+                    dirX = 10;
                     dirY = 0;
                     dir = "right";
                 }
