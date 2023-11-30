@@ -123,7 +123,7 @@ class Combat1 {
         }
 
 
-        return level;
+        return 22;
     }
 
 
